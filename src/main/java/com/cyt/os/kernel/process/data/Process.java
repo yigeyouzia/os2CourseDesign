@@ -1,7 +1,6 @@
-package com.cyt.os.kernel.process;
+package com.cyt.os.kernel.process.data;
 
-import com.cyt.os.common.Config;
-import lombok.Data;
+import com.cyt.os.enums.PStatus;
 
 /**
  * @author cyt

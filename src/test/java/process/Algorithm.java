@@ -1,21 +1,12 @@
 package process;
 
-import com.cyt.os.HelloApplication;
-import com.cyt.os.kernel.process.PCB;
+import com.cyt.os.kernel.process.data.PCB;
 import com.cyt.os.kernel.process.algorithm.FCFS;
 import com.cyt.os.kernel.process.algorithm.PJF;
 import com.cyt.os.kernel.process.algorithm.RR;
 import com.cyt.os.kernel.process.algorithm.SJF;
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author cyt

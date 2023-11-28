@@ -1,8 +1,9 @@
-package com.cyt.os.kernel.process;
+package com.cyt.os.kernel.process.data;
 
+import com.cyt.os.enums.PStatus;
+import com.cyt.os.kernel.memory.data.MemoryBlock;
 import com.cyt.os.ustils.RandomUtil;
 import javafx.beans.property.*;
-import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,11 @@ public class PCB {
      */
     private int memorySize;
 
+    /**
+     * 进程所对应的小内存块
+     */
+    private MemoryBlock memoryBlock;
+
     public PCB() {
         this.pid = new SimpleIntegerProperty(RandomUtil.getRandomPid());
         this.uid = new SimpleStringProperty();
@@ -87,7 +93,8 @@ public class PCB {
         this.maxR = new ArrayList<>();
         this.needR = new ArrayList<>();
         this.alocR = new ArrayList<>();
-        this.memorySize = new Random().nextInt(450) + 50;
+//        this.memorySize = new Random().nextInt(450) + 50;
+        this.memorySize = 50;
     }
 
     /**
@@ -114,7 +121,8 @@ public class PCB {
         this.maxR = new ArrayList<>();
         this.needR = new ArrayList<>();
         this.alocR = new ArrayList<>();
-        this.memorySize = new Random().nextInt(450) + 50;
+//        this.memorySize = new Random().nextInt(450) + 50;
+        this.memorySize = 50;
     }
 
     public void IncreaseRunTime(int num) {
@@ -263,6 +271,13 @@ public class PCB {
 
     public void setMemorySize(int memorySize) {
         this.memorySize = memorySize;
+    }
+    public MemoryBlock getHole() {
+        return memoryBlock;
+    }
+
+    public void setHole(MemoryBlock memoryBlock) {
+        this.memoryBlock = memoryBlock;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.cyt.os.kernel.process;
+package com.cyt.os.enums;
 
 public enum PStatus {
     /** 执行状态 */

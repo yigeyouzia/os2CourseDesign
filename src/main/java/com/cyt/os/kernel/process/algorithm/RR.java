@@ -1,8 +1,8 @@
 package com.cyt.os.kernel.process.algorithm;
 
 import com.cyt.os.common.Config;
-import com.cyt.os.kernel.process.PCB;
-import com.cyt.os.kernel.process.PStatus;
+import com.cyt.os.kernel.process.data.PCB;
+import com.cyt.os.enums.PStatus;
 import org.apache.log4j.Logger;
 
 import java.util.List;

@@ -1,11 +1,8 @@
 package process;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-import com.cyt.os.kernel.process.PCB;
-import com.cyt.os.kernel.process.Process;
+import com.cyt.os.kernel.process.data.Process;
 
 
 /**
