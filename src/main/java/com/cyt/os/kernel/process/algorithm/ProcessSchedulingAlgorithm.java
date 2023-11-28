@@ -1,8 +1,8 @@
 package com.cyt.os.kernel.process.algorithm;
 
 import com.cyt.os.common.Config;
+import com.cyt.os.enums.ProcessStatus;
 import com.cyt.os.kernel.process.data.PCB;
-import com.cyt.os.enums.PStatus;
 import com.cyt.os.kernel.process.data.Process;
 import org.apache.log4j.Logger;
 
@@ -61,9 +61,9 @@ public abstract class ProcessSchedulingAlgorithm implements Runnable {
     public void executeProcess(PCB pcb) {
         Process process = new Process(pcb);
         // 设置进程正在运行
-        pcb.setStatus(PStatus.RUNNING);
+        pcb.setStatus(ProcessStatus.RUNNING);
         // 执行进程
-        while (pcb.getStatus() != PStatus.DESTROY) {
+        while (pcb.getStatus() != ProcessStatus.DESTROY) {
             // 传给Process
             process.run(Math.toIntExact(Config.TIME_SLICE_5));
             try {
@@ -84,7 +84,7 @@ public abstract class ProcessSchedulingAlgorithm implements Runnable {
     public void executeProcess(PCB pcb, int timeSlice) {
         Process process = new Process(pcb);
         // 设置进程正在运行
-        pcb.setStatus(PStatus.RUNNING);
+        pcb.setStatus(ProcessStatus.RUNNING);
         // 执行进程
         process.run(timeSlice);
         try {
@@ -94,7 +94,7 @@ public abstract class ProcessSchedulingAlgorithm implements Runnable {
         }
         if (pcb.getUsedTime() == pcb.getServiceTime()) {
             log.info("进程 { " + pcb.getPid() + "} 结束");
-        } else if (pcb.getStatus() != PStatus.ACTIVE_READY) {
+        } else if (pcb.getStatus() != ProcessStatus.ACTIVE_READY) {
             addPCB(pcb);
         }
     }

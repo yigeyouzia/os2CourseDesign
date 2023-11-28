@@ -1,8 +1,8 @@
 package com.cyt.os.kernel.process.algorithm;
 
 import com.cyt.os.common.Config;
+import com.cyt.os.enums.ProcessStatus;
 import com.cyt.os.kernel.process.data.PCB;
-import com.cyt.os.enums.PStatus;
 import org.apache.log4j.Logger;
 
 import java.util.List;
@@ -32,7 +32,7 @@ public class RR extends ProcessSchedulingAlgorithm {
             //取出就绪队列的第一个进程
             PCB pcb = removePCB(0);
             //若该进程被挂起，则移到就绪队列队尾
-            if (pcb.getStatus() == PStatus.STATIC_READY) {
+            if (pcb.getStatus() == ProcessStatus.STATIC_READY) {
                 addPCB(pcb);
                 continue;
             }

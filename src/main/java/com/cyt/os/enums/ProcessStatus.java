@@ -1,6 +1,6 @@
 package com.cyt.os.enums;
 
-public enum PStatus {
+public enum ProcessStatus {
     /** 执行状态 */
     RUNNING,
     /** 活动就绪状态 */

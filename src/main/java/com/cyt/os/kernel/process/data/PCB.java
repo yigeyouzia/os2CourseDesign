@@ -1,13 +1,12 @@
 package com.cyt.os.kernel.process.data;
 
-import com.cyt.os.enums.PStatus;
+import com.cyt.os.enums.ProcessStatus;
 import com.cyt.os.kernel.memory.data.MemoryBlock;
 import com.cyt.os.ustils.RandomUtil;
 import javafx.beans.property.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 //进程控制块
 @SuppressWarnings("{all}")
@@ -27,7 +26,7 @@ public class PCB {
     /**
      * 进程状态
      */
-    private final ObjectProperty<PStatus> status;
+    private final ObjectProperty<ProcessStatus> status;
 
     /**
      * 到达时间
@@ -80,7 +79,7 @@ public class PCB {
         this.pid = new SimpleIntegerProperty(RandomUtil.getRandomPid());
         this.uid = new SimpleStringProperty();
         this.priority = new SimpleIntegerProperty(0);
-        this.status = new SimpleObjectProperty<>(PStatus.CREATE);
+        this.status = new SimpleObjectProperty<>(ProcessStatus.CREATE);
 
         this.arrivalTime = new SimpleIntegerProperty(0);
         this.serviceTime = new SimpleIntegerProperty(1);
@@ -108,7 +107,7 @@ public class PCB {
         this.pid = new SimpleIntegerProperty(RandomUtil.getRandomPid());
         this.uid = new SimpleStringProperty(name);
         this.priority = new SimpleIntegerProperty(priority);
-        this.status = new SimpleObjectProperty<>(PStatus.CREATE);
+        this.status = new SimpleObjectProperty<>(ProcessStatus.CREATE);
 
         this.arrivalTime = new SimpleIntegerProperty(arrival);
         this.serviceTime = new SimpleIntegerProperty(runtime);
@@ -169,15 +168,15 @@ public class PCB {
         return priority;
     }
 
-    public PStatus getStatus() {
+    public ProcessStatus getStatus() {
         return status.get();
     }
 
-    public void setStatus(PStatus status) {
+    public void setStatus(ProcessStatus status) {
         this.status.set(status);
     }
 
-    public ObjectProperty<PStatus> statusProperty() {
+    public ObjectProperty<ProcessStatus> statusProperty() {
         return status;
     }
 

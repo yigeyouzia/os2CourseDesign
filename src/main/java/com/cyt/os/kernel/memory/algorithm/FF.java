@@ -1,8 +1,8 @@
 package com.cyt.os.kernel.memory.algorithm;
 
-import com.cyt.os.kernel.memory.data.MemoryBlock;
-import com.cyt.os.exception.MemoryException;
 import com.cyt.os.enums.MemoryStatus;
+import com.cyt.os.exception.MemoryException;
+import com.cyt.os.kernel.memory.data.MemoryBlock;
 import org.apache.log4j.Logger;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.cyt.os.kernel.process.data;
 
-import com.cyt.os.enums.PStatus;
+import com.cyt.os.enums.ProcessStatus;
 
 /**
  * @author cyt
@@ -25,7 +25,7 @@ public class Process {
         } else {
             pcb.setUsedTime(pcb.getServiceTime());
             // 销毁
-            pcb.setStatus(PStatus.DESTROY);
+            pcb.setStatus(ProcessStatus.DESTROY);
         }
     }
 }

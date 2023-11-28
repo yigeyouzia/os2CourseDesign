@@ -1,8 +1,8 @@
 package com.cyt.os.kernel.memory;
 
+import com.cyt.os.enums.MemoryStatus;
 import com.cyt.os.kernel.memory.algorithm.MemoryAllocationAlgorithm;
 import com.cyt.os.kernel.memory.data.MemoryBlock;
-import com.cyt.os.enums.MemoryStatus;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

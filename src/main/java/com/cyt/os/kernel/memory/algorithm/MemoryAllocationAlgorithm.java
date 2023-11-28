@@ -1,7 +1,7 @@
 package com.cyt.os.kernel.memory.algorithm;
 
-import com.cyt.os.kernel.memory.data.MemoryBlock;
 import com.cyt.os.enums.MemoryStatus;
+import com.cyt.os.kernel.memory.data.MemoryBlock;
 import com.cyt.os.kernel.process.data.PCB;
 import org.apache.log4j.Logger;
 

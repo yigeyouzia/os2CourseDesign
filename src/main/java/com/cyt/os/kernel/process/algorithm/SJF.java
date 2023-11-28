@@ -1,8 +1,8 @@
 package com.cyt.os.kernel.process.algorithm;
 
 import com.cyt.os.common.Config;
+import com.cyt.os.enums.ProcessStatus;
 import com.cyt.os.kernel.process.data.PCB;
-import com.cyt.os.enums.PStatus;
 import org.apache.log4j.Logger;
 
 import java.util.Comparator;
@@ -36,7 +36,7 @@ public class SJF extends ProcessSchedulingAlgorithm {
             // 取出到达时间最小
             // TODO ACTIVE_READY
             Optional<PCB> minService = readyQueue.stream().
-                    filter(pcb -> pcb.getStatus() == PStatus.CREATE).
+                    filter(pcb -> pcb.getStatus() == ProcessStatus.CREATE).
                     min(Comparator.comparingInt(PCB::getServiceTime));
             if (minService.isPresent()) {
                 PCB min = minService.get();

@@ -13,9 +13,9 @@ public class SystemKernel {
     /**
      * 进程管理器
      */
-    private final static ProcessManager processManager = new ProcessManager();
+    private final ProcessManager processManager = new ProcessManager();
     /**
      * 内存管理器
      */
-    private final static MemoryManager memoryManager = new MemoryManager();
+    private final MemoryManager memoryManager = new MemoryManager();
 }
