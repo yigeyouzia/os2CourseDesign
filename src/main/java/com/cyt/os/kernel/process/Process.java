@@ -22,7 +22,7 @@ public class Process {
         // 1.还能运行
         if ((pcb.getUsedTime() + time) <= pcb.getServiceTime()) {
             pcb.setUsedTime(pcb.getUsedTime() + time);
-            System.out.println(pcb.getPid() + " 运行了：" + time);
+            System.out.println(pcb.getUid() + " 运行了：" + time);
         } else {
             pcb.setUsedTime(pcb.getServiceTime());
             // 销毁

@@ -4,6 +4,7 @@ import com.cyt.os.HelloApplication;
 import com.cyt.os.kernel.process.PCB;
 import com.cyt.os.kernel.process.algorithm.FCFS;
 import com.cyt.os.kernel.process.algorithm.PJF;
+import com.cyt.os.kernel.process.algorithm.RR;
 import com.cyt.os.kernel.process.algorithm.SJF;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -41,5 +42,11 @@ public class Algorithm {
         readyQueue.add(new PCB("C", 3, 3, 30));
         SJF sjf = new SJF(readyQueue);
         sjf.run();
+        // 4.时间片轮转
+        readyQueue.add(new PCB("A", 1, 1, 10));
+        readyQueue.add(new PCB("B", 2, 0, 20));
+        readyQueue.add(new PCB("C", 3, 3, 30));
+        RR rr = new RR(readyQueue);
+        rr.run();
     }
 }

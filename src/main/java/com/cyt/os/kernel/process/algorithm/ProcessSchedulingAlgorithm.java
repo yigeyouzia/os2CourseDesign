@@ -33,20 +33,23 @@ public abstract class ProcessSchedulingAlgorithm implements Runnable {
     public synchronized PCB removePCB(PCB pcb) {
         // TODO ui模式
         readyQueue.remove(pcb);
-//        Platform.runLater(() -> readyQueue.remove(pcb));
+        //  Platform.runLater(() -> readyQueue.remove(pcb));
         return pcb;
     }
 
     public synchronized void addPCB(PCB pcb) {
-        Platform.runLater(() -> readyQueue.add(pcb));
+        // TODO
+        readyQueue.add(pcb);
+        log.info("添加进程  " + pcb.getUid() + " 到末尾");
+        //  Platform.runLater(() -> readyQueue.add(pcb));
     }
 
     public synchronized PCB removePCB(int index) {
+        // TODO ui模式
         PCB pcb = readyQueue.get(index);
         readyQueue.remove(index);
-        // TODO ui模式
-//        Platform.runLater(() -> readyQueue.remove(index));
-        log.info("移除pcb" + readyQueue.size());
+        //  Platform.runLater(() -> readyQueue.remove(index));
+        log.info("移除pcb  " + pcb.getUid() + "剩余大小： " + readyQueue.size());
         return pcb;
     }
 
@@ -58,6 +61,9 @@ public abstract class ProcessSchedulingAlgorithm implements Runnable {
      */
     public void executeProcess(PCB pcb) {
         Process process = new Process(pcb);
+        // 设置进程正在运行
+        pcb.setStatus(PStatus.RUNNING);
+        // 执行进程
         while (pcb.getStatus() != PStatus.DESTROY) {
             // 传给Process
             process.run(Math.toIntExact(Config.TIME_SLICE_5));
@@ -68,5 +74,29 @@ public abstract class ProcessSchedulingAlgorithm implements Runnable {
             }
         }
         log.info("进程 { " + pcb.getPid() + "} 结束");
+    }
+
+    /**
+     * 时间片轮转执行函数
+     *
+     * @param pcb
+     * @param timeSlice
+     */
+    public void executeProcess(PCB pcb, int timeSlice) {
+        Process process = new Process(pcb);
+        // 设置进程正在运行
+        pcb.setStatus(PStatus.RUNNING);
+        // 执行进程
+        process.run(timeSlice);
+        try {
+            TimeUnit.MILLISECONDS.sleep(Config.WAIT_INTERVAL_500);
+        } catch (InterruptedException e) {
+            log.info("进程 " + pcb.getPid() + " 被打断");
+        }
+        if (pcb.getUsedTime() == pcb.getServiceTime()) {
+            log.info("进程 { " + pcb.getPid() + "} 结束");
+        } else if (pcb.getStatus() != PStatus.ACTIVE_READY) {
+            addPCB(pcb);
+        }
     }
 }
