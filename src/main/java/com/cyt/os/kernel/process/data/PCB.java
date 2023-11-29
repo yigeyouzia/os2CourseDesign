@@ -6,6 +6,7 @@ import com.cyt.os.ustils.RandomUtil;
 import javafx.beans.property.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 //进程控制块
@@ -130,6 +131,12 @@ public class PCB {
         //数据绑定，设置剩余时间、进程进度为动态更新
         this.remainingTime.bind(this.serviceTime.subtract(this.usedTime));
         this.progress.bind(this.usedTime.multiply(1.0).divide(this.serviceTime));
+    }
+
+    public void initResources(List<Integer> list) {
+        maxR.addAll(list);
+        needR.addAll(list);
+        Collections.addAll(alocR, 0, 0, 0);
     }
 
     public void IncreaseRunTime(int num) {

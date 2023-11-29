@@ -4,6 +4,8 @@ import com.cyt.os.controller.MainController;
 import com.cyt.os.enums.ProcessStatus;
 import com.cyt.os.kernel.process.algorithm.ProcessSchedulingAlgorithm;
 import com.cyt.os.kernel.process.data.PCB;
+import com.cyt.os.kernel.resourse.algorithm.BankerAlgorithm;
+import com.cyt.os.kernel.resourse.data.BankerData;
 import com.cyt.os.ustils.RandomUtil;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -12,6 +14,7 @@ import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -34,6 +37,10 @@ public class ProcessManager extends Thread {
     private final ObservableList<PCB> blockQueue = FXCollections.observableArrayList();
     /* PCB表，便于检索PCB */
     private final List<PCB> PCBList = new ArrayList<>();
+
+    /* 银行家算法 */
+    private BankerAlgorithm ba = new BankerAlgorithm(MainController.systemKernel.getResourceManager());
+
 
     /**
      * 进程调度算法
@@ -76,6 +83,9 @@ public class ProcessManager extends Thread {
         pcb.setArrivalTime(Integer.parseInt(cpuTime.get()));
         PCBList.add(pcb);
 
+        initResource(pcb);
+
+
         // 1.申请分配内存
         MainController.systemKernel.getMemoryManager().getMAA().allocateMemory(pcb.getMemorySize(), pcb.getPid());
 //        System.out.println("================分配之前：");
@@ -92,6 +102,36 @@ public class ProcessManager extends Thread {
             readyQueue.add(pcb);
         }
         return pcb;
+    }
+
+    /**
+     * 初始化资源信息
+     */
+    private void initResource(PCB pcb) {
+        //随机生成进程所需资源总数 资源a b c
+        int ra = random.nextInt(3) + 3;
+        int rb = random.nextInt(2) + 3;
+        int rc = random.nextInt(1) + 3;
+
+        //更新银行家算法中的数据
+        List<Integer> maxList = new ArrayList<>();
+        Collections.addAll(maxList, ra, rb, rc);
+
+        /* 更新pcb对应数据 */
+        pcb.initResources(maxList);
+
+        List<Integer> needList = new ArrayList<>();
+        Collections.addAll(needList, ra, rb, rc);
+
+        List<Integer> alocList = new ArrayList<>();
+        Collections.addAll(alocList, 0, 0, 0);
+
+
+        BankerData data = new BankerData();
+        data.setMax(maxList);
+        data.setNeed(needList);
+        data.setAllocation(alocList);
+        ba.getData().put(pcb.getPid(), data);
     }
 
     // 设置算法
