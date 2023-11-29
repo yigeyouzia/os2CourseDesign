@@ -8,6 +8,9 @@ module com.cyt.ctqos {
 
     opens com.cyt.os to javafx.fxml;
     exports com.cyt.os;
+    exports com.cyt.os.kernel.process.data;
+    exports com.cyt.os.kernel.process;
+    exports com.cyt.os.kernel.memory.data;
     exports com.cyt.os.controller;
     opens com.cyt.os.controller to javafx.fxml;
 }

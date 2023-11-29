@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox prefHeight="500.0" prefWidth="800.0" stylesheets="../css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cyt.os.controller.ProcessController">
+<HBox prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cyt.os.controller.ProcessController">
     <children>
         <VBox prefWidth="250.0" spacing="10.0">
             <children>
@@ -81,7 +81,7 @@
                         <Insets bottom="10.0" top="10.0" />
                     </VBox.margin>
                 </Text>
-                <TableView fx:id="tableProcess" prefHeight="300.0" prefWidth="200.0" VBox.vgrow="SOMETIMES">
+                <TableView fx:id="tableProcess" prefHeight="300.0" prefWidth="400.0" VBox.vgrow="SOMETIMES">
                     <columns>
                         <TableColumn fx:id="tcPId" prefWidth="55.0" text="pid" />
                         <TableColumn fx:id="tcUId" prefWidth="55.0" text="uid" />
@@ -97,8 +97,8 @@
                 </TableView>
                 <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="10.0">
                     <children>
-                        <JFXButton layoutX="316.0" layoutY="20.0" onAction="#createNewProcess" styleClass="btn-pm" text="创建" textFill="WHITE" />
-                        <JFXButton layoutX="316.0" layoutY="20.0" onAction="#destroyProcess" styleClass="btn-pm" text="终止" textFill="WHITE" />
+                        <JFXButton onAction="#createNewProcess" styleClass="btn-pm" text="创建" textFill="WHITE" />
+                        <JFXButton onAction="#destroyProcess" styleClass="btn-pm" text="终止" textFill="WHITE" />
                         <JFXButton layoutX="346.0" layoutY="20.0" onAction="#suspendProcess" styleClass="btn-pm" text="挂起" textFill="WHITE" />
                         <JFXButton layoutX="316.0" layoutY="20.0" onAction="#activeProcess" styleClass="btn-pm" text="激活" textFill="WHITE" />
                         <JFXButton layoutX="180.0" layoutY="22.0" onAction="#stopPSA" styleClass="btn-pm" text="暂停">

@@ -94,6 +94,10 @@ public class PCB {
         this.alocR = new ArrayList<>();
 //        this.memorySize = new Random().nextInt(450) + 50;
         this.memorySize = 50;
+
+        //数据绑定，设置剩余时间、进程进度为动态更新
+        this.remainingTime.bind(this.serviceTime.subtract(this.usedTime));
+        this.progress.bind(this.usedTime.multiply(1.0).divide(this.serviceTime));
     }
 
     /**
@@ -122,6 +126,10 @@ public class PCB {
         this.alocR = new ArrayList<>();
 //        this.memorySize = new Random().nextInt(450) + 50;
         this.memorySize = 50;
+
+        //数据绑定，设置剩余时间、进程进度为动态更新
+        this.remainingTime.bind(this.serviceTime.subtract(this.usedTime));
+        this.progress.bind(this.usedTime.multiply(1.0).divide(this.serviceTime));
     }
 
     public void IncreaseRunTime(int num) {

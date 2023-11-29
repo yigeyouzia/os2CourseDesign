@@ -3,6 +3,7 @@ package com.cyt.os.controller;
 import com.cyt.os.enums.ProcessStatus;
 import com.cyt.os.kernel.SystemKernel;
 import com.cyt.os.kernel.process.ProcessManager;
+import com.cyt.os.kernel.process.algorithm.ProcessSchedulingAlgorithm;
 import com.cyt.os.kernel.process.data.PCB;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
@@ -14,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import org.apache.log4j.Logger;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -59,10 +61,17 @@ public class ProcessController extends RootController {
 
     @FXML
     void initialize() {
-        SystemKernel systemKernel = new SystemKernel();
-        pcsMgr = systemKernel.getProcessManager();
+        pcsMgr = MainController.systemKernel.getProcessManager();
+        // CPU时间
+        txtCpuTime.textProperty().bind(pcsMgr.getCpuTimeProperty());
 
-//        initTable();
+
+        // 进程表格
+        initTable();
+        // 调度算法选项
+        initCbb();
+        // 开启调度算法线程
+        MainController.systemKernel.start();
     }
 
     public void createNewProcess(ActionEvent actionEvent) {
@@ -83,8 +92,6 @@ public class ProcessController extends RootController {
     }
 
     public void stopPSA(ActionEvent actionEvent) {
-        PCB pcb = pcsMgr.create();
-        tableProcess.getItems().add(pcb);
     }
 
     public void continuePSA(ActionEvent actionEvent) {
@@ -113,9 +120,29 @@ public class ProcessController extends RootController {
                 if (empty || item == null) {
                     this.setText(null);
                 } else {
-                    this.setText(item.get(0) + "-" + item.get(1) + "-" + item.get(2));
+                    //  this.setText(item.get(0) + "-" + item.get(1) + "-" + item.get(2));
+                    // TODO 资源分配
+                    this.setText(1 + "-" + 1 + "-" + 1);
                 }
             }
         });
+    }
+
+    private void initCbb() {
+        cbbSa.getItems().addAll("FCFS", "SJF", "PJF", "RR");
+        cbbSa.getSelectionModel().selectedItemProperty().addListener((obs, ov, nv) -> {
+            try {
+                ProcessSchedulingAlgorithm psa =
+                        (ProcessSchedulingAlgorithm) Class.forName("com.cyt.os.kernel.process.algorithm." + nv)
+                                .getConstructor(List.class)
+                                .newInstance(pcsMgr.getReadyQueue());
+                pcsMgr.setPsa(psa);
+            } catch (ClassNotFoundException | NoSuchMethodException |
+                     InvocationTargetException | InstantiationException |
+                     IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        cbbSa.getSelectionModel().select(0);
     }
 }

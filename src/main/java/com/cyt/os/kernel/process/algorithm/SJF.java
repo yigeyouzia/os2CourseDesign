@@ -26,7 +26,6 @@ public class SJF extends ProcessSchedulingAlgorithm {
 
     @Override
     public void run() {
-        log.warn("SJF短作业优先开始调度");
         while (!readyQueue.isEmpty()) {
             try {
                 TimeUnit.MILLISECONDS.sleep(Config.WAIT_PROCESS_200);
@@ -36,7 +35,7 @@ public class SJF extends ProcessSchedulingAlgorithm {
             // 取出到达时间最小
             // TODO ACTIVE_READY
             Optional<PCB> minService = readyQueue.stream().
-                    filter(pcb -> pcb.getStatus() == ProcessStatus.CREATE).
+                    filter(pcb -> pcb.getStatus() == ProcessStatus.ACTIVE_READY).
                     min(Comparator.comparingInt(PCB::getServiceTime));
             if (minService.isPresent()) {
                 PCB min = minService.get();

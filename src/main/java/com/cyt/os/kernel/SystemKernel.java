@@ -18,4 +18,9 @@ public class SystemKernel {
      * 内存管理器
      */
     private final MemoryManager memoryManager = new MemoryManager();
+
+    /** 启动各管理器 */
+    public void start() {
+        this.processManager.start();
+    }
 }

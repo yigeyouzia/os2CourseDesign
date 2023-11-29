@@ -11,6 +11,8 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 先来先执行
+ *
  * @author cyt
  * @date 2023/11/24
  */
@@ -24,18 +26,20 @@ public class FCFS extends ProcessSchedulingAlgorithm {
 
     @Override
     public void run() {
-        log.warn("FCFS先来先服务开始调度");
+//        log.info("readyQueue  " + this.readyQueue.size());
         while (!readyQueue.isEmpty()) {
             try {
                 TimeUnit.MILLISECONDS.sleep(Config.WAIT_PROCESS_200);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
             // 取出到达时间最小
             // TODO ACTIVE_READY
             Optional<PCB> minArrival = readyQueue.stream().
-                    filter(pcb -> pcb.getStatus() == ProcessStatus.CREATE).
+                    filter(pcb -> pcb.getStatus() == ProcessStatus.ACTIVE_READY).
                     min(Comparator.comparingInt(PCB::getArrivalTime));
+
             if (minArrival.isPresent()) {
                 PCB min = minArrival.get();
                 PCB pcb = removePCB(min);

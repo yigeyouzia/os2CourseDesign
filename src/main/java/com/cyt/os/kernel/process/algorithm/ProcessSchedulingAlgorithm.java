@@ -4,6 +4,7 @@ import com.cyt.os.common.Config;
 import com.cyt.os.enums.ProcessStatus;
 import com.cyt.os.kernel.process.data.PCB;
 import com.cyt.os.kernel.process.data.Process;
+import javafx.application.Platform;
 import org.apache.log4j.Logger;
 
 import java.util.List;
@@ -38,9 +39,9 @@ public abstract class ProcessSchedulingAlgorithm implements Runnable {
 
     public synchronized void addPCB(PCB pcb) {
         // TODO
-        readyQueue.add(pcb);
+//        readyQueue.add(pcb);
         log.info("添加进程  " + pcb.getUid() + " 到末尾");
-        //  Platform.runLater(() -> readyQueue.add(pcb));
+        Platform.runLater(() -> readyQueue.add(pcb));
     }
 
     public synchronized PCB removePCB(int index) {
@@ -59,6 +60,7 @@ public abstract class ProcessSchedulingAlgorithm implements Runnable {
      * @param pcb
      */
     public void executeProcess(PCB pcb) {
+        System.out.println("进入 executeProcess");
         Process process = new Process(pcb);
         // 设置进程正在运行
         pcb.setStatus(ProcessStatus.RUNNING);
@@ -66,13 +68,14 @@ public abstract class ProcessSchedulingAlgorithm implements Runnable {
         while (pcb.getStatus() != ProcessStatus.DESTROY) {
             // 传给Process
             process.run(Math.toIntExact(Config.TIME_SLICE_5));
+            // 休息等待
             try {
                 TimeUnit.MILLISECONDS.sleep(Config.WAIT_INTERVAL_500);
             } catch (InterruptedException e) {
                 log.info("进程 " + pcb.getPid() + " 被打断");
             }
         }
-        log.info("进程 { " + pcb.getPid() + "} 结束");
+        log.info("进程  " + pcb.getUid() + " 结束");
     }
 
     /**

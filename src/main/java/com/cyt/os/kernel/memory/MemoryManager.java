@@ -1,6 +1,7 @@
 package com.cyt.os.kernel.memory;
 
 import com.cyt.os.enums.MemoryStatus;
+import com.cyt.os.kernel.memory.algorithm.FF;
 import com.cyt.os.kernel.memory.algorithm.MemoryAllocationAlgorithm;
 import com.cyt.os.kernel.memory.data.MemoryBlock;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ public class MemoryManager {
     private MemoryAllocationAlgorithm maa;
 
     public MemoryManager() {
+        this.maa = new FF(memoryList);
         //200*2 300*2 500*4 1000*2 总计5000
         memoryList.add(new MemoryBlock(0, 200));
         memoryList.add(new MemoryBlock(200, 200));

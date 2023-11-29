@@ -13,19 +13,19 @@ import java.io.IOException;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-//        stage.setTitle("Hello!");
-//        stage.setScene(scene);
-//        stage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/Process.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 920, 640);
+        primaryStage.setTitle("Hello!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
-        primaryStage = Operation.createStage("Process", "进程系统", false);
-        //primaryStage.setMaximized(true);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.setOnCloseRequest(event -> {
-            Platform.exit();
-            System.exit(0);
-        });
+//        primaryStage = Operation.createStage("Process", "进程系统", false);
+//        //primaryStage.setMaximized(true);
+//        primaryStage.initStyle(StageStyle.TRANSPARENT);
+//        primaryStage.setOnCloseRequest(event -> {
+//            Platform.exit();
+//            System.exit(0);
+//        });
         primaryStage.show();
     }
 

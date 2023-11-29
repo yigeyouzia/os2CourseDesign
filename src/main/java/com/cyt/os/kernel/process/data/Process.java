@@ -1,6 +1,7 @@
 package com.cyt.os.kernel.process.data;
 
 import com.cyt.os.enums.ProcessStatus;
+import org.apache.log4j.Logger;
 
 /**
  * @author cyt
@@ -8,6 +9,8 @@ import com.cyt.os.enums.ProcessStatus;
  */
 @SuppressWarnings({"all"})
 public class Process {
+
+    public static final Logger log = Logger.getLogger(Process.class.getName());
 
     private final PCB pcb;
 
@@ -21,7 +24,7 @@ public class Process {
         // 1.还能运行
         if ((pcb.getUsedTime() + time) <= pcb.getServiceTime()) {
             pcb.setUsedTime(pcb.getUsedTime() + time);
-            System.out.println(pcb.getUid() + " 运行了：" + time);
+            log.info(pcb.getUid() + " 运行了：" + time);
         } else {
             pcb.setUsedTime(pcb.getServiceTime());
             // 销毁
