@@ -254,7 +254,7 @@ public class ProcessManager extends Thread {
         }
 
         /* 终止原语 释放所有资源 TODO */
-//        pcb.releaseAllResources();
+        pcb.releaseAllResources();
         MainController.systemKernel
                 .getMemoryManager()
                 .getMAA()
@@ -296,6 +296,18 @@ public class ProcessManager extends Thread {
                 }
                 break;
             }
+        }
+    }
+
+    public void stopPSA() {
+        synchronized (saThread) {
+            saThread.suspend();
+        }
+    }
+
+    public void continuePSA() {
+        synchronized (saThread) {
+            saThread.resume();
         }
     }
 

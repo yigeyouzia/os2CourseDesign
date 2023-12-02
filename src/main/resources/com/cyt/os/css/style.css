@@ -1,3 +1,11 @@
+/*.default-color2.chart-pie { -fx-pie-color: #ffdd40; }*/
+/*.default-color3.chart-pie { -fx-pie-color: #9abd57; }*/
+/*.default-color4.chart-pie { -fx-pie-color: #2bc9f7; }*/
+/*.default-color5.chart-pie { -fx-pie-color: #1cabbb; }*/
+/*.default-color6.chart-pie { -fx-pie-color: #2b73f7; }*/
+/*.default-color7.chart-pie { -fx-pie-color: #9760f1; }*/
+
+
 .table-column {
     -fx-alignment: center;
 }

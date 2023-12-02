@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import org.apache.log4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
@@ -54,6 +55,10 @@ public class ProcessController extends RootController {
     /* 资源 */
     @FXML
     private PieChart ResourcePieA;
+    @FXML
+    private PieChart ResourcePieB;
+    @FXML
+    private PieChart ResourcePieC;
     /* 进程管理器 */
     private ProcessManager pcsMgr;
 
@@ -85,14 +90,14 @@ public class ProcessController extends RootController {
     public TableColumn<PCB, Integer> tcNeedR;
 
     /* CPU时间 */
-//    @FXML
-//    private Text txtCpuTime;
+    @FXML
+    private Text txtCpuTime;
 
     @FXML
     void initialize() {
         pcsMgr = MainController.systemKernel.getProcessManager();
         // CPU时间
-//        txtCpuTime.textProperty().bind(pcsMgr.getCpuTimeProperty());
+        txtCpuTime.textProperty().bind(pcsMgr.getCpuTimeProperty());
 
         // 进程表格
         initTable();
@@ -101,19 +106,12 @@ public class ProcessController extends RootController {
         initReadyTable();
         initBlockTable();
         /* 资源饼图 */
-        initPie();
+        updateResource(0, 0, 0);
         /* 内存条 */
         // 开启调度算法线程
         MainController.systemKernel.start();
     }
 
-    public void initPie() {
-        ObservableList<PieChart.Data> answer = FXCollections.observableArrayList();
-        ResourceManager rm = MainController.systemKernel.getResourceManager();
-        answer.addAll(new PieChart.Data("可用资源A", 1.0),
-                new PieChart.Data("占用资源A", 0.0));
-        ResourcePieA.setData(answer);
-    }
 
     private void initReadyTable() {
         tcUId1.setCellValueFactory(new PropertyValueFactory<>("uid"));
@@ -130,7 +128,7 @@ public class ProcessController extends RootController {
     public void createNewProcess(ActionEvent actionEvent) {
         PCB pcb = pcsMgr.create();
         tableProcess.getItems().add(pcb);
-//        tableReady.setItems(pcsMgr.getReadyQueue());
+        tableReady.setItems(pcsMgr.getReadyQueue());
     }
 
     public void destroyProcess(ActionEvent actionEvent) {
@@ -159,16 +157,13 @@ public class ProcessController extends RootController {
     }
 
     public void stopPSA(ActionEvent actionEvent) {
-        log.warn("禁止进程");
-        PCB pcb = getPCB();
-        ObservableList<PCB> blockQueue = MainController.systemKernel.getProcessManager().getBlockQueue();
-        ResourceManager resourceManager = MainController.systemKernel.getResourceManager();
-        System.out.println(blockQueue);
+        log.warn("暂停进程");
+        pcsMgr.stopPSA();
     }
 
     public void continuePSA(ActionEvent actionEvent) {
         log.warn("继续进程");
-        PCB pcb = getPCB();
+        pcsMgr.continuePSA();
         MainController.systemKernel.getMemoryManager().getMAA().showMemory();
     }
 
@@ -242,8 +237,18 @@ public class ProcessController extends RootController {
     public void updateResource(int ra, int rb, int rc) {
         log.info("更新饼图： " + ra + rb + rc);
         ObservableList<PieChart.Data> a = FXCollections.observableArrayList();
+        ObservableList<PieChart.Data> b = FXCollections.observableArrayList();
+        ObservableList<PieChart.Data> c = FXCollections.observableArrayList();
+
+
         a.addAll(new PieChart.Data("可用资源A", (double) ra / 10),
                 new PieChart.Data("占用资源A", (double) (10 - ra) / 10));
+        b.addAll(new PieChart.Data("可用资源B", (double) rb / 10),
+                new PieChart.Data("占用资源B", (double) (10 - rb) / 10));
+        c.addAll(new PieChart.Data("可用资源C", (double) rc / 10),
+                new PieChart.Data("占用资源C", (double) (10 - rc) / 10));
         ResourcePieA.setData(a);
+        ResourcePieB.setData(b);
+        ResourcePieC.setData(c);
     }
 }
