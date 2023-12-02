@@ -98,7 +98,6 @@ public abstract class MemoryAllocationAlgorithm {
                 else {
                     log.info("回收的内存分区无法合并");
                 }
-
             }
         }
     }

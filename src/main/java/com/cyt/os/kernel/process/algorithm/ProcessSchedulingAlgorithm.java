@@ -60,7 +60,6 @@ public abstract class ProcessSchedulingAlgorithm implements Runnable {
      * @param pcb
      */
     public void executeProcess(PCB pcb) {
-        System.out.println("进入 executeProcess");
         Process process = new Process(pcb);
         // 设置进程正在运行
         pcb.setStatus(ProcessStatus.RUNNING);

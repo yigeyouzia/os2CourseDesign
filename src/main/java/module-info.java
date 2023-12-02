@@ -4,6 +4,8 @@ module com.cyt.ctqos {
     requires lombok;
     requires log4j;
     requires com.jfoenix;
+    requires hutool.all;
+    requires commons.io;
 
 
     opens com.cyt.os to javafx.fxml;

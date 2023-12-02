@@ -1,120 +1,192 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cyt.os.controller.ProcessController">
-    <children>
-        <VBox prefWidth="250.0" spacing="10.0">
-            <children>
-                <VBox alignment="TOP_CENTER" spacing="5.0" VBox.vgrow="SOMETIMES">
-                    <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="就绪队列">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Text>
-                        <JFXListView fx:id="listReady" prefHeight="220.0" />
-                    </children>
-                    <padding>
-                        <Insets top="5.0" />
-                    </padding>
-                </VBox>
-                <VBox alignment="TOP_CENTER" spacing="5.0" VBox.vgrow="SOMETIMES">
-                    <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="阻塞队列">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets />
-                            </VBox.margin>
-                        </Text>
-                        <JFXListView fx:id="listBlock" prefHeight="220.0" />
-                    </children>
-                    <padding>
-                        <Insets top="5.0" />
-                    </padding>
-                </VBox>
-            </children>
-        </VBox>
-        <VBox alignment="TOP_CENTER" prefWidth="600.0">
-            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="600.0">
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CPU时间：">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                    <HBox.margin>
-                        <Insets left="100.0" />
-                    </HBox.margin>
-                </Text>
-                <Text fx:id="txtCpuTime" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Text>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="调度算法：">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                    <HBox.margin>
-                        <Insets left="100.0" />
-                    </HBox.margin>
-                </Text>
-                <JFXComboBox fx:id="cbbSa" focusColor="#66cccc" prefHeight="30.0" prefWidth="160.0">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                </JFXComboBox>
+<BorderPane prefWidth="1279.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cyt.os.controller.ProcessController">
+   <top>
+       <MenuBar prefHeight="4.0" prefWidth="978.0" BorderPane.alignment="CENTER">
+         <menus>
+            <Menu fx:id="processAlg" mnemonicParsing="false" text="进程调度(P)">
+               <items>
+                   <MenuItem mnemonicParsing="false" text="FCFS" />
+                   <MenuItem mnemonicParsing="false" text="SJF" />
+                   <MenuItem mnemonicParsing="false" text="PJF" />
+                   <MenuItem mnemonicParsing="false" text="RR" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="设备(D)">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="打印机" />
+                  <MenuItem mnemonicParsing="false" text="刻录机" />
+                  <MenuItem mnemonicParsing="false" text="发声机" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="更多(M)">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="避免死锁(银行家算法)" />
+                  <MenuItem mnemonicParsing="false" text="分配回收" />
+                  <MenuItem mnemonicParsing="false" text="换入换出" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="实用工具(U)">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="一键运行所有实例" />
+                  <MenuItem mnemonicParsing="false" text="一键结束所有实例" />
+                  <MenuItem mnemonicParsing="false" text="一键创建实例" />
+                  <MenuItem mnemonicParsing="false" text="启动计时器" />
+                  <MenuItem mnemonicParsing="false" text="重置时间" />
+                  <MenuItem mnemonicParsing="false" text="随机等待I/O" />
+                  <MenuItem mnemonicParsing="false" text="随机请求设备" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="帮助(H)">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="关于" />
+                  <MenuItem mnemonicParsing="false" text="联系我们" />
+                  <MenuItem mnemonicParsing="false" text="版本" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+
+   <left>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <TabPane prefHeight="870" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="进程">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="1000.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="870.0" prefWidth="1000.0">
+                                 <children>
+                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="进程表">
+                                         <font>
+                                             <Font size="16.0" />
+                                         </font>
+                                         <VBox.margin>
+                                             <Insets bottom="10.0" top="10.0" />
+                                         </VBox.margin>
+                                     </Text>
+                                    <TableView fx:id="tableProcess" prefHeight="456.0" prefWidth="1000.0">
+                                      <columns>
+                                          <TableColumn fx:id="tcPId" prefWidth="90.0" text="pid" />
+                                          <TableColumn fx:id="tcUId" prefWidth="90.0" text="uid" />
+                                          <TableColumn fx:id="tcStatus" prefWidth="130.0" text="状态" />
+                                          <TableColumn fx:id="tcPriority" prefWidth="70.0" text="优先级" />
+                                          <TableColumn fx:id="tcProgress" prefWidth="90" text="进度" />
+                                          <TableColumn fx:id="tcMemory" prefWidth="90" text="所需内存" />
+                                          <TableColumn fx:id="tcArrivalTime" prefWidth="90.0" text="到达时间" />
+                                          <TableColumn fx:id="tcServiceTime" prefWidth="90.0" text="所需时间" />
+                                          <TableColumn fx:id="tcUsedTime" prefWidth="90.0" text="已执行时间" />
+                                          <TableColumn fx:id="tcMaxR" prefWidth="90" text="Max" />
+                                          <TableColumn fx:id="tcNeedR" prefWidth="90" text="Need" />
+                                      </columns>
+                                    </TableView>
+                                 </children></VBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="暂定">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <HBox prefHeight="600.0" prefWidth="1000.0" spacing="30">
+               <children>
+                   <VBox alignment="TOP_CENTER">
+                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="就绪队列">
+                           <font>
+                               <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                               <Insets bottom="10.0" />
+                           </VBox.margin>
+                       </Text>
+                       <TableView fx:id="tableReady" prefHeight="600" prefWidth="300">
+                           <columns>
+                               <TableColumn fx:id="tcUId1" prefWidth="100.0" text="uid" />
+                               <TableColumn fx:id="tcStatus1" prefWidth="200.0" text="状态" />
+                           </columns>
+                       </TableView>
+                   </VBox>
+
+                   <VBox alignment="TOP_CENTER">
+                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="阻塞队列">
+                           <font>
+                               <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                               <Insets bottom="10.0" />
+                           </VBox.margin>
+                       </Text>
+                       <TableView fx:id="tableSuspend" prefHeight="600" prefWidth="300">
+                           <columns>
+                               <TableColumn fx:id="tcUId2" prefWidth="100" text="uid" />
+                               <TableColumn fx:id="tcStatus2" prefWidth="200.0" text="状态" />
+                           </columns>
+                       </TableView>
+                   </VBox>
+<!--                   <JFXListView prefHeight="600" prefWidth="400"></JFXListView>-->
+                   <!-- 饼图 -->
+                   <VBox alignment="CENTER" spacing="20">
+                       <HBox>
+                        <children>
+                            <PieChart fx:id="ResourcePieA"/>
+                        </children>
+                       </HBox>
+                   </VBox>
+               </children>
+                <padding>
+                    <Insets bottom="20" left="20" />
+                </padding>
             </HBox>
-            <Separator prefWidth="200.0" />
-            <VBox alignment="TOP_CENTER" prefHeight="380.0" prefWidth="100.0" VBox.vgrow="SOMETIMES">
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="进程表">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                    <VBox.margin>
-                        <Insets bottom="10.0" top="10.0" />
-                    </VBox.margin>
-                </Text>
-                <TableView fx:id="tableProcess" prefHeight="300.0" prefWidth="400.0" VBox.vgrow="SOMETIMES">
-                    <columns>
-                        <TableColumn fx:id="tcPId" prefWidth="55.0" text="pid" />
-                        <TableColumn fx:id="tcUId" prefWidth="55.0" text="uid" />
-                        <TableColumn fx:id="tcStatus" prefWidth="110.0" text="状态" />
-                        <TableColumn fx:id="tcPriority" prefWidth="60.0" text="优先级" />
-                        <TableColumn fx:id="tcProgress" text="进度" />
-                  <TableColumn fx:id="tcMemory" text="所需内存" />
-                  <TableColumn fx:id="tcMaxR" text="所需资源" />
-                        <TableColumn fx:id="tcArrivalTime" prefWidth="60.0" text="到达时间" />
-                        <TableColumn fx:id="tcServiceTime" prefWidth="60.0" text="所需时间" />
-                        <TableColumn fx:id="tcUsedTime" prefWidth="70.0" text="已执行时间" />
-                    </columns>
-                </TableView>
-                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="10.0">
-                    <children>
-                        <JFXButton onAction="#createNewProcess" styleClass="btn-pm" text="创建" textFill="WHITE" />
-                        <JFXButton onAction="#destroyProcess" styleClass="btn-pm" text="终止" textFill="WHITE" />
-                        <JFXButton layoutX="346.0" layoutY="20.0" onAction="#suspendProcess" styleClass="btn-pm" text="挂起" textFill="WHITE" />
-                        <JFXButton layoutX="316.0" layoutY="20.0" onAction="#activeProcess" styleClass="btn-pm" text="激活" textFill="WHITE" />
-                        <JFXButton layoutX="180.0" layoutY="22.0" onAction="#stopPSA" styleClass="btn-pm" text="暂停">
-                            <HBox.margin>
-                                <Insets left="50.0" />
-                            </HBox.margin>
-                        </JFXButton>
-                        <JFXButton layoutX="408.0" layoutY="22.0" onAction="#continuePSA" styleClass="btn-pm" text="继续" />
-                    </children>
-                </HBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" />
-            <VBox prefHeight="200.0" prefWidth="100.0" />
-            </VBox>
-            <HBox.margin>
-                <Insets left="5.0" />
-            </HBox.margin>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="1042.0" prefWidth="131.0" spacing="30" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#createNewProcess" prefHeight="30" prefWidth="80" text="创建" />
+            <Button mnemonicParsing="false" onAction="#destroyProcess" prefHeight="30" prefWidth="80" text="中止" />
+             <Button mnemonicParsing="false" onAction="#suspendProcess" prefHeight="30" prefWidth="80" text="挂起" />
+             <Button mnemonicParsing="false" onAction="#activeProcess" prefHeight="30" prefWidth="80" text="激活" />
+             <Button mnemonicParsing="false" onAction="#stopPSA" prefHeight="30" prefWidth="80" text="暂停" />
+             <Button mnemonicParsing="false" onAction="#continuePSA" prefHeight="30" prefWidth="80" text="继续" />
+         </children>
+          <padding>
+              <Insets top="50" />
+          </padding>
+      </VBox>
+   </center>
+    <right>
+        <VBox alignment="CENTER">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="系统日志">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <HBox prefHeight="875.0" prefWidth="279.0">
+                <children>
+                    <HBox prefHeight="875.0" prefWidth="249.0">
+                        <children>
+                            <TextArea prefHeight="875.0" prefWidth="265.0" />
+                        </children>
+                        <HBox.margin>
+                            <Insets bottom="20" top="20" />
+                        </HBox.margin>
+                    </HBox>
+                </children>
+            </HBox>
         </VBox>
-    </children>
-</HBox>
+
+    </right>
+</BorderPane>

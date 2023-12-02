@@ -1,13 +1,18 @@
 package com.cyt.os.kernel.process.data;
 
+import com.cyt.os.controller.MainController;
 import com.cyt.os.enums.ProcessStatus;
 import com.cyt.os.kernel.memory.data.MemoryBlock;
+import com.cyt.os.kernel.process.ProcessManager;
+import com.cyt.os.kernel.resourse.algorithm.BankerAlgorithm;
 import com.cyt.os.ustils.RandomUtil;
+import javafx.application.Platform;
 import javafx.beans.property.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 //进程控制块
 @SuppressWarnings("{all}")
@@ -102,11 +107,10 @@ public class PCB {
     }
 
     /**
-     *
-     * @param name 进程名称
+     * @param name     进程名称
      * @param priority 优先级
-     * @param arrival 到达时间
-     * @param runtime 运行时间
+     * @param arrival  到达时间
+     * @param runtime  运行时间
      */
     public PCB(String name, int priority, int arrival, int runtime) {
         this.pid = new SimpleIntegerProperty(RandomUtil.getRandomPid());
@@ -125,8 +129,7 @@ public class PCB {
         this.maxR = new ArrayList<>();
         this.needR = new ArrayList<>();
         this.alocR = new ArrayList<>();
-//        this.memorySize = new Random().nextInt(450) + 50;
-        this.memorySize = 50;
+        this.memorySize = new Random().nextInt(450) + 4450;
 
         //数据绑定，设置剩余时间、进程进度为动态更新
         this.remainingTime.bind(this.serviceTime.subtract(this.usedTime));
@@ -137,6 +140,16 @@ public class PCB {
         maxR.addAll(list);
         needR.addAll(list);
         Collections.addAll(alocR, 0, 0, 0);
+    }
+
+    public void updateResources(List<Integer> list) {
+        needR.set(0, needR.get(0) - list.get(0));
+        needR.set(1, needR.get(1) - list.get(1));
+        needR.set(2, needR.get(2) - list.get(2));
+
+        alocR.set(0, alocR.get(0) + list.get(0));
+        alocR.set(1, alocR.get(1) + list.get(1));
+        alocR.set(2, alocR.get(2) + list.get(2));
     }
 
     public void IncreaseRunTime(int num) {
@@ -286,6 +299,7 @@ public class PCB {
     public void setMemorySize(int memorySize) {
         this.memorySize = memorySize;
     }
+
     public MemoryBlock getHole() {
         return memoryBlock;
     }
@@ -308,6 +322,20 @@ public class PCB {
                 ", waitedTime=" + waitedTime +
                 ", progress=" + progress +
                 '}';
+    }
+
+    public void releaseAllResources() {
+        //释放资源
+        MainController.systemKernel.getResourceManager().release(this);
+        //更新银行家算法中的数据
+        BankerAlgorithm ba = ProcessManager.getBA();
+        ba.getData().remove(pid.get());
+        ba.release(maxR);
+        //释放资源后检查是否有进程可以申请资源
+        Platform.runLater(() -> {
+            MainController.systemKernel.getProcessManager().checkBlock();
+            MainController.systemKernel.getProcessManager().checkUnReady();
+        });
     }
 }
 

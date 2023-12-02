@@ -1,11 +1,15 @@
 package com.cyt.os.kernel.process;
 
+import com.cyt.os.common.Operation;
 import com.cyt.os.controller.MainController;
 import com.cyt.os.enums.ProcessStatus;
+import com.cyt.os.exception.BAException;
+import com.cyt.os.exception.PCBNotFoundException;
 import com.cyt.os.kernel.process.algorithm.ProcessSchedulingAlgorithm;
 import com.cyt.os.kernel.process.data.PCB;
 import com.cyt.os.kernel.resourse.algorithm.BankerAlgorithm;
 import com.cyt.os.kernel.resourse.data.BankerData;
+import com.cyt.os.kernel.resourse.data.ResourceRequest;
 import com.cyt.os.ustils.RandomUtil;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -39,7 +43,7 @@ public class ProcessManager extends Thread {
     private final List<PCB> PCBList = new ArrayList<>();
 
     /* 银行家算法 */
-    private BankerAlgorithm ba = new BankerAlgorithm(MainController.systemKernel.getResourceManager());
+    private static BankerAlgorithm ba;
 
 
     /**
@@ -53,6 +57,7 @@ public class ProcessManager extends Thread {
 
     @Override
     public void run() {
+        ba = new BankerAlgorithm(MainController.systemKernel.getResourceManager());
         while (true) {
             try {
                 TimeUnit.SECONDS.sleep(1);
@@ -70,34 +75,46 @@ public class ProcessManager extends Thread {
      * @return
      */
     public PCB create() {
-        System.out.println(RandomUtil.UidNameLength);
+
         PCB pcb = new PCB();
         // TODO 初始化pcb
-        pcb.setMemorySize(50);
+        pcb.setMemorySize(random.nextInt(200) + 100);
         int pid = RandomUtil.getRandomPid();
         pcb.setPid(pid);
         pcb.setServiceTime(random.nextInt(30) + 20);
         pcb.setPriority(random.nextInt(10));
         pcb.setUid(RandomUtil.getRandomUid());
-        pcb.setArrivalTime(random.nextInt(20) + 20);
         pcb.setArrivalTime(Integer.parseInt(cpuTime.get()));
         PCBList.add(pcb);
 
+
+        // 1.资源分配
         initResource(pcb);
+        // 初始化请求
+        ResourceRequest req = ResourceRequest.generateRequest(pcb.getPid());
+
+        // 2.申请分配内存
+        try {
+            log.info("fenpei: " + pcb.getMemorySize());
+            // 分配内存
+            MainController.systemKernel.
+                    getMemoryManager().
+                    getMAA().
+                    allocateMemory(pcb.getMemorySize(), pcb.getPid());
+            // 分配资源
+            log.info("req" + req.getSource());
+            ba.bankerAlgorithm(req);
+            pcb.updateResources(req.getSource());
+            pcb.setStatus(ProcessStatus.ACTIVE_READY);
+            log.info("设置");
+        } catch (RuntimeException e) {
+            pcb.setStatus(ProcessStatus.ACTIVE_BLOCK);
+            blockQueue.add(pcb);
+            log.error(e.getMessage());
+        }
 
 
-        // 1.申请分配内存
-        MainController.systemKernel.getMemoryManager().getMAA().allocateMemory(pcb.getMemorySize(), pcb.getPid());
-//        System.out.println("================分配之前：");
-//        MainController.systemKernel.getMemoryManager().getMAA().showMemory();
-//        System.out.println("================分配之后：");
-//        MainController.systemKernel.getMemoryManager().getMAA().allocateMemory(50, pcb.getPid());
-//        MainController.systemKernel.getMemoryManager().getMAA().showMemory();
-
-        // 2.资源分配
         // 3.设置活动就绪
-        pcb.setStatus(ProcessStatus.ACTIVE_READY);
-
         if (pcb.getStatus() == ProcessStatus.ACTIVE_READY) {
             readyQueue.add(pcb);
         }
@@ -159,11 +176,149 @@ public class ProcessManager extends Thread {
         }
     }
 
+    /**
+     * 根据pid获取对应的PCB
+     */
+    public PCB getPCB(int pid) {
+        for (PCB pcb : PCBList) {
+            if (pcb.getPid() == pid) {
+                return pcb;
+            }
+        }
+        log.error("未找到pid为:" + pid + " 的进程");
+        throw new PCBNotFoundException();
+    }
+
+    /**
+     * 挂起进程
+     *
+     * @param pid 进程pid
+     */
+    public void suspend(int pid) {
+        PCB pcb = getPCB(pid);
+        if (pcb == null) {
+            return;
+        }
+
+        //活动阻塞->静止阻塞
+        if (pcb.getStatus().equals(ProcessStatus.ACTIVE_BLOCK)) {
+            pcb.setStatus(ProcessStatus.STATIC_BLOCK);
+        }
+        //活动就绪->静止就绪
+        else if (pcb.getStatus().equals(ProcessStatus.ACTIVE_READY)) {
+            pcb.setStatus(ProcessStatus.STATIC_READY);
+        }
+        //执行->静止就绪
+        else if (pcb.getStatus().equals(ProcessStatus.RUNNING)) {
+            pcb.setStatus(ProcessStatus.STATIC_READY);
+        } else {
+            Operation.showErrorAlert("进程状态有误，无法挂起");
+        }
+    }
+
+    /**
+     * 激活原语
+     *
+     * @param id 进程id
+     */
+    public void active(int id) {
+        PCB pcb = getPCB(id);
+
+        if (pcb == null) {
+            return;
+        }
+
+        //静止阻塞->活动阻塞
+        if (pcb.getStatus().equals(ProcessStatus.STATIC_BLOCK)) {
+            pcb.setStatus(ProcessStatus.ACTIVE_BLOCK);
+        }
+        //静止就绪->活动就绪
+        if (pcb.getStatus().equals(ProcessStatus.STATIC_READY)) {
+            pcb.setStatus(ProcessStatus.ACTIVE_READY);
+        } else {
+            Operation.showErrorAlert("进程状态有误，无法激活");
+        }
+    }
+
+
+    /**
+     * 终止原语
+     *
+     * @param id 进程id
+     */
+    public void destroy(int id) {
+        PCB pcb = getPCB(id);
+
+        if (pcb == null) {
+            return;
+        }
+
+        /* 终止原语 释放所有资源 TODO */
+//        pcb.releaseAllResources();
+        MainController.systemKernel
+                .getMemoryManager()
+                .getMAA()
+                .release(pcb.getPid());
+        pcb.setStatus(ProcessStatus.DESTROY);
+        readyQueue.remove(pcb);
+    }
+
     public ObservableList<PCB> getReadyQueue() {
         return this.readyQueue;
     }
 
+    public ObservableList<PCB> getBlockQueue() {
+        return this.blockQueue;
+    }
+
     public StringProperty getCpuTimeProperty() {
         return cpuTime;
+    }
+
+    public static BankerAlgorithm getBA() {
+        return ba;
+    }
+
+    /**
+     * 检查是否有创建时请求资源分配失败的进程，有则重新申请资源
+     */
+    public void checkUnReady() {
+        for (PCB pcb : PCBList) {
+            if (pcb.getStatus() == ProcessStatus.CREATE) {
+                ResourceRequest req = ResourceRequest.generateRequest(pcb.getPid());
+                try {
+                    ba.bankerAlgorithm(req);
+                    pcb.updateResources(req.getSource());
+                    pcb.setStatus(ProcessStatus.ACTIVE_READY);
+                    readyQueue.add(pcb);
+                } catch (BAException e) {
+                    log.error(e.getMessage());
+                }
+                break;
+            }
+        }
+    }
+
+    /**
+     * 检查是否有陷入阻塞的进程，有则重新申请资源
+     */
+    public void checkBlock() {
+        for (PCB pcb : PCBList) {
+            if (pcb.getStatus() == ProcessStatus.ACTIVE_BLOCK) {
+                // TODO bug resource
+//                ResourceRequest req = ResourceRequest.generateRemainRequest(pcb);
+                ResourceRequest req = ResourceRequest.generateRequest(pcb.getPid());
+                try {
+                    ba.bankerAlgorithm(req);
+                    pcb.updateResources(req.getSource());
+                    pcb.setStatus(ProcessStatus.ACTIVE_READY);
+                    blockQueue.remove(pcb);
+                    readyQueue.add(pcb);
+                } catch (BAException e) {
+                    log.error(e.getMessage());
+                }
+                break;
+            }
+        }
     }
 }

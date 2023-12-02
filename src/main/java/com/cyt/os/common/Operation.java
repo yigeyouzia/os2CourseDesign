@@ -11,10 +11,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * 常用操作类
- *
- * @author JuLiy
- * @date 2022/12/9 13:50
+ * @author cyt
+ * @date 2023/12/1
  */
 public class Operation {
 
@@ -31,15 +29,15 @@ public class Operation {
         try {
             root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("view/" + fxmlName + ".fxml")));
         } catch (IOException e) {
-//            throw new FxmlLoadError(e);
+            throw new RuntimeException(e);
         }
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
+        stage.setScene(new Scene(root, 1400, 778));
         stage.setTitle(title);
         stage.setResizable(isResizeable);
-        if (!"Main".equals(fxmlName)) {
-            stage.setAlwaysOnTop(true);
-        }
+//        if (!"Main".equals(fxmlName)) {
+//            stage.setAlwaysOnTop(true);
+//        }
         Context.stageMap.put(fxmlName, stage);
         return stage;
     }

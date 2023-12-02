@@ -1,1 +1,175 @@
-2023-11-29 23:04:11 INFO  BankerAlgorithm:41 - 进程  520  进入银行家算法
+2023-12-02 18:46:42 INFO  ProcessManager:98 - fenpei: 184
+2023-12-02 18:46:42 INFO  FF:31 - FF算法查询次数： 1
+2023-12-02 18:46:42 INFO  FF:34 - 成功向进程P43324分配大小为184KB的内存块
+2023-12-02 18:46:42 INFO  ProcessManager:105 - req[1, 1, 1]
+2023-12-02 18:46:42 INFO  BankerAlgorithm:42 - **********进程P43324  进入银行家算法 *************
+2023-12-02 18:46:42 INFO  BankerAlgorithm:87 - 进程P43324  尝试试探性分配
+2023-12-02 18:46:42 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-02 18:46:42 INFO  BankerAlgorithm:104 - available:[9, 9, 9]
+2023-12-02 18:46:42 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-02 18:46:42 INFO  BankerAlgorithm:170 - 资源  43324 回收完毕
+2023-12-02 18:46:42 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-02 18:46:42 INFO  BankerAlgorithm:67 - 进程P43324  的资源请求：[1, 1, 1] 通过
+2023-12-02 18:46:42 INFO  ResourceManager:52 - 进程 43324 正式分配资源
+2023-12-02 18:46:42 INFO  ResourceManager:58 - 当前资源： 9-9-9
+2023-12-02 18:46:42 INFO  ProcessController:243 - 更新饼图： 999
+2023-12-02 18:46:42 INFO  ProcessManager:109 - 设置
+2023-12-02 18:46:43 INFO  ProcessManager:98 - fenpei: 223
+2023-12-02 18:46:43 INFO  FF:31 - FF算法查询次数： 3
+2023-12-02 18:46:43 INFO  FF:34 - 成功向进程P78756分配大小为223KB的内存块
+2023-12-02 18:46:43 INFO  ProcessManager:105 - req[1, 1, 1]
+2023-12-02 18:46:43 INFO  BankerAlgorithm:42 - **********进程P78756  进入银行家算法 *************
+2023-12-02 18:46:43 INFO  BankerAlgorithm:87 - 进程P78756  尝试试探性分配
+2023-12-02 18:46:43 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-02 18:46:43 INFO  BankerAlgorithm:104 - available:[8, 8, 8]
+2023-12-02 18:46:43 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-02 18:46:43 INFO  BankerAlgorithm:170 - 资源  78756 回收完毕
+2023-12-02 18:46:43 INFO  BankerAlgorithm:170 - 资源  43324 回收完毕
+2023-12-02 18:46:43 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-02 18:46:43 INFO  BankerAlgorithm:67 - 进程P78756  的资源请求：[1, 1, 1] 通过
+2023-12-02 18:46:43 INFO  ResourceManager:52 - 进程 78756 正式分配资源
+2023-12-02 18:46:43 INFO  ResourceManager:58 - 当前资源： 8-8-8
+2023-12-02 18:46:43 INFO  ProcessController:243 - 更新饼图： 888
+2023-12-02 18:46:43 INFO  ProcessManager:109 - 设置
+2023-12-02 18:46:44 INFO  ProcessManager:98 - fenpei: 106
+2023-12-02 18:46:44 INFO  FF:31 - FF算法查询次数： 2
+2023-12-02 18:46:44 INFO  FF:34 - 成功向进程P91801分配大小为106KB的内存块
+2023-12-02 18:46:44 INFO  ProcessManager:105 - req[1, 1, 1]
+2023-12-02 18:46:44 INFO  BankerAlgorithm:42 - **********进程P91801  进入银行家算法 *************
+2023-12-02 18:46:44 INFO  BankerAlgorithm:87 - 进程P91801  尝试试探性分配
+2023-12-02 18:46:44 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-02 18:46:44 INFO  BankerAlgorithm:104 - available:[7, 7, 7]
+2023-12-02 18:46:44 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-02 18:46:44 INFO  BankerAlgorithm:170 - 资源  78756 回收完毕
+2023-12-02 18:46:44 INFO  BankerAlgorithm:170 - 资源  91801 回收完毕
+2023-12-02 18:46:44 INFO  BankerAlgorithm:170 - 资源  43324 回收完毕
+2023-12-02 18:46:44 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-02 18:46:44 INFO  BankerAlgorithm:67 - 进程P91801  的资源请求：[1, 1, 1] 通过
+2023-12-02 18:46:44 INFO  ResourceManager:52 - 进程 91801 正式分配资源
+2023-12-02 18:46:44 INFO  ResourceManager:58 - 当前资源： 7-7-7
+2023-12-02 18:46:44 INFO  ProcessController:243 - 更新饼图： 777
+2023-12-02 18:46:44 INFO  ProcessManager:109 - 设置
+2023-12-02 18:46:45 INFO  ProcessManager:98 - fenpei: 217
+2023-12-02 18:46:45 INFO  FF:31 - FF算法查询次数： 6
+2023-12-02 18:46:45 INFO  FF:34 - 成功向进程P48536分配大小为217KB的内存块
+2023-12-02 18:46:45 INFO  ProcessManager:105 - req[1, 1, 1]
+2023-12-02 18:46:45 INFO  BankerAlgorithm:42 - **********进程P48536  进入银行家算法 *************
+2023-12-02 18:46:45 INFO  BankerAlgorithm:87 - 进程P48536  尝试试探性分配
+2023-12-02 18:46:45 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-02 18:46:45 INFO  BankerAlgorithm:104 - available:[6, 6, 6]
+2023-12-02 18:46:45 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-02 18:46:45 INFO  BankerAlgorithm:170 - 资源  78756 回收完毕
+2023-12-02 18:46:45 INFO  BankerAlgorithm:170 - 资源  91801 回收完毕
+2023-12-02 18:46:45 INFO  BankerAlgorithm:170 - 资源  48536 回收完毕
+2023-12-02 18:46:45 INFO  BankerAlgorithm:170 - 资源  43324 回收完毕
+2023-12-02 18:46:45 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-02 18:46:45 INFO  BankerAlgorithm:67 - 进程P48536  的资源请求：[1, 1, 1] 通过
+2023-12-02 18:46:45 INFO  ResourceManager:52 - 进程 48536 正式分配资源
+2023-12-02 18:46:45 INFO  ResourceManager:58 - 当前资源： 6-6-6
+2023-12-02 18:46:45 INFO  ProcessController:243 - 更新饼图： 666
+2023-12-02 18:46:45 INFO  ProcessManager:109 - 设置
+2023-12-02 18:46:48 INFO  ProcessManager:98 - fenpei: 120
+2023-12-02 18:46:48 INFO  FF:31 - FF算法查询次数： 8
+2023-12-02 18:46:48 INFO  FF:34 - 成功向进程P83019分配大小为120KB的内存块
+2023-12-02 18:46:48 INFO  ProcessManager:105 - req[1, 1, 1]
+2023-12-02 18:46:48 INFO  BankerAlgorithm:42 - **********进程P83019  进入银行家算法 *************
+2023-12-02 18:46:48 INFO  BankerAlgorithm:87 - 进程P83019  尝试试探性分配
+2023-12-02 18:46:48 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-02 18:46:48 INFO  BankerAlgorithm:104 - available:[5, 5, 5]
+2023-12-02 18:46:48 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-02 18:46:48 INFO  BankerAlgorithm:170 - 资源  78756 回收完毕
+2023-12-02 18:46:48 INFO  BankerAlgorithm:170 - 资源  91801 回收完毕
+2023-12-02 18:46:48 INFO  BankerAlgorithm:170 - 资源  48536 回收完毕
+2023-12-02 18:46:48 INFO  BankerAlgorithm:170 - 资源  83019 回收完毕
+2023-12-02 18:46:48 INFO  BankerAlgorithm:170 - 资源  43324 回收完毕
+2023-12-02 18:46:48 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-02 18:46:48 INFO  BankerAlgorithm:67 - 进程P83019  的资源请求：[1, 1, 1] 通过
+2023-12-02 18:46:48 INFO  ResourceManager:52 - 进程 83019 正式分配资源
+2023-12-02 18:46:48 INFO  ResourceManager:58 - 当前资源： 5-5-5
+2023-12-02 18:46:48 INFO  ProcessController:243 - 更新饼图： 555
+2023-12-02 18:46:48 INFO  ProcessManager:109 - 设置
+2023-12-02 18:46:52 INFO  ProcessManager:98 - fenpei: 247
+2023-12-02 18:46:52 INFO  FF:31 - FF算法查询次数： 9
+2023-12-02 18:46:52 INFO  FF:34 - 成功向进程P83892分配大小为247KB的内存块
+2023-12-02 18:46:52 INFO  ProcessManager:105 - req[1, 1, 1]
+2023-12-02 18:46:52 INFO  BankerAlgorithm:42 - **********进程P83892  进入银行家算法 *************
+2023-12-02 18:46:52 INFO  BankerAlgorithm:87 - 进程P83892  尝试试探性分配
+2023-12-02 18:46:52 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-02 18:46:52 INFO  BankerAlgorithm:104 - available:[4, 4, 4]
+2023-12-02 18:46:52 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-02 18:46:52 INFO  BankerAlgorithm:170 - 资源  78756 回收完毕
+2023-12-02 18:46:52 INFO  BankerAlgorithm:170 - 资源  83892 回收完毕
+2023-12-02 18:46:52 INFO  BankerAlgorithm:170 - 资源  91801 回收完毕
+2023-12-02 18:46:52 INFO  BankerAlgorithm:170 - 资源  48536 回收完毕
+2023-12-02 18:46:52 INFO  BankerAlgorithm:170 - 资源  83019 回收完毕
+2023-12-02 18:46:52 INFO  BankerAlgorithm:170 - 资源  43324 回收完毕
+2023-12-02 18:46:52 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-02 18:46:52 INFO  BankerAlgorithm:67 - 进程P83892  的资源请求：[1, 1, 1] 通过
+2023-12-02 18:46:52 INFO  ResourceManager:52 - 进程 83892 正式分配资源
+2023-12-02 18:46:52 INFO  ResourceManager:58 - 当前资源： 4-4-4
+2023-12-02 18:46:52 INFO  ProcessController:243 - 更新饼图： 444
+2023-12-02 18:46:52 INFO  ProcessManager:109 - 设置
+2023-12-02 18:46:54 INFO  Process:30 - 迅雷 运行了：5
+2023-12-02 18:46:55 INFO  Process:30 - 迅雷 运行了：5
+2023-12-02 18:46:55 INFO  Process:30 - 迅雷 运行了：5
+2023-12-02 18:46:56 INFO  Process:30 - 迅雷 运行了：5
+2023-12-02 18:46:56 INFO  Process:30 - 迅雷 运行了：5
+2023-12-02 18:46:57 INFO  Process:30 - 迅雷 运行了：5
+2023-12-02 18:46:57 INFO  Process:30 - 迅雷 运行了：5
+2023-12-02 18:46:58 INFO  Process:30 - 迅雷 运行了：5
+2023-12-02 18:46:58 INFO  ResourceManager:69 - 迅雷 释放资源 --[1, 1, 1]
+2023-12-02 18:46:58 INFO  ResourceManager:73 - 当前资源： 5-5-5
+2023-12-02 18:46:58 INFO  ProcessController:243 - 更新饼图： 555
+2023-12-02 18:46:58 INFO  FF:99 - 回收的内存分区无法合并
+2023-12-02 18:46:59 INFO  FCFS:77 - 进程  迅雷 结束
+2023-12-02 18:46:59 INFO  Process:30 - Eclipse 运行了：5
+2023-12-02 18:47:00 INFO  Process:30 - Eclipse 运行了：5
+2023-12-02 18:47:00 INFO  Process:30 - Eclipse 运行了：5
+2023-12-02 18:47:01 INFO  Process:30 - Eclipse 运行了：5
+2023-12-02 18:47:01 INFO  Process:30 - Eclipse 运行了：5
+2023-12-02 18:47:02 INFO  Process:30 - Eclipse 运行了：5
+2023-12-02 18:47:02 INFO  Process:30 - Eclipse 运行了：5
+2023-12-02 18:47:03 INFO  Process:30 - Eclipse 运行了：5
+2023-12-02 18:47:03 INFO  Process:30 - Eclipse 运行了：5
+2023-12-02 18:47:04 INFO  ResourceManager:69 - Eclipse 释放资源 --[1, 1, 1]
+2023-12-02 18:47:04 INFO  ResourceManager:73 - 当前资源： 6-6-6
+2023-12-02 18:47:04 INFO  ProcessController:243 - 更新饼图： 666
+2023-12-02 18:47:04 INFO  FF:74 - 回收的内存分区与前后分区合并，新空闲分区起址为：306，大小为：394
+2023-12-02 18:47:04 INFO  FCFS:77 - 进程  Eclipse 结束
+2023-12-02 18:47:04 INFO  Process:30 - QQ音乐 运行了：5
+2023-12-02 18:47:05 INFO  Process:30 - QQ音乐 运行了：5
+2023-12-02 18:47:05 INFO  Process:30 - QQ音乐 运行了：5
+2023-12-02 18:47:06 INFO  Process:30 - QQ音乐 运行了：5
+2023-12-02 18:47:06 INFO  Process:30 - QQ音乐 运行了：5
+2023-12-02 18:47:07 INFO  ResourceManager:69 - QQ音乐 释放资源 --[1, 1, 1]
+2023-12-02 18:47:07 INFO  ResourceManager:73 - 当前资源： 7-7-7
+2023-12-02 18:47:07 INFO  ProcessController:243 - 更新饼图： 777
+2023-12-02 18:47:07 INFO  FF:74 - 回收的内存分区与前后分区合并，新空闲分区起址为：0，大小为：700
+2023-12-02 18:47:07 INFO  FCFS:77 - 进程  QQ音乐 结束
+2023-12-02 18:47:07 INFO  Process:30 - 云顶之弈 运行了：5
+2023-12-02 18:47:08 INFO  Process:30 - 云顶之弈 运行了：5
+2023-12-02 18:47:08 INFO  Process:30 - 云顶之弈 运行了：5
+2023-12-02 18:47:09 INFO  Process:30 - 云顶之弈 运行了：5
+2023-12-02 18:47:09 INFO  ResourceManager:69 - 云顶之弈 释放资源 --[1, 1, 1]
+2023-12-02 18:47:09 INFO  ResourceManager:73 - 当前资源： 8-8-8
+2023-12-02 18:47:09 INFO  ProcessController:243 - 更新饼图： 888
+2023-12-02 18:47:09 INFO  FF:74 - 回收的内存分区与前后分区合并，新空闲分区起址为：0，大小为：1000
+2023-12-02 18:47:10 INFO  FCFS:77 - 进程  云顶之弈 结束
+2023-12-02 18:47:10 INFO  Process:30 - Pycharm 运行了：5
+2023-12-02 18:47:11 INFO  Process:30 - Pycharm 运行了：5
+2023-12-02 18:47:11 INFO  Process:30 - Pycharm 运行了：5
+2023-12-02 18:47:12 INFO  Process:30 - Pycharm 运行了：5
+2023-12-02 18:47:12 INFO  ResourceManager:69 - Pycharm 释放资源 --[1, 1, 1]
+2023-12-02 18:47:12 INFO  ResourceManager:73 - 当前资源： 9-9-9
+2023-12-02 18:47:12 INFO  ProcessController:243 - 更新饼图： 999
+2023-12-02 18:47:12 INFO  FF:83 - 回收的内存分区与前分区合并，新空闲分区起址为：0，大小为：1120
+2023-12-02 18:47:13 INFO  FCFS:77 - 进程  Pycharm 结束
+2023-12-02 18:47:13 INFO  Process:30 - GoLand 运行了：5
+2023-12-02 18:47:13 INFO  Process:30 - GoLand 运行了：5
+2023-12-02 18:47:14 INFO  Process:30 - GoLand 运行了：5
+2023-12-02 18:47:14 INFO  Process:30 - GoLand 运行了：5
+2023-12-02 18:47:15 INFO  ResourceManager:69 - GoLand 释放资源 --[1, 1, 1]
+2023-12-02 18:47:15 INFO  ResourceManager:73 - 当前资源： 10-10-10
+2023-12-02 18:47:15 INFO  ProcessController:243 - 更新饼图： 101010
+2023-12-02 18:47:15 INFO  FF:74 - 回收的内存分区与前后分区合并，新空闲分区起址为：0，大小为：1500
+2023-12-02 18:47:15 INFO  FCFS:77 - 进程  GoLand 结束

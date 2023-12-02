@@ -1,6 +1,9 @@
 package com.cyt.os.kernel.process.data;
 
+import com.cyt.os.controller.MainController;
+import com.cyt.os.controller.ProcessController;
 import com.cyt.os.enums.ProcessStatus;
+import javafx.application.Platform;
 import org.apache.log4j.Logger;
 
 /**
@@ -29,6 +32,15 @@ public class Process {
             pcb.setUsedTime(pcb.getServiceTime());
             // 销毁
             pcb.setStatus(ProcessStatus.DESTROY);
+            // 释放资源
+            Platform.runLater(() -> pcb.releaseAllResources());
+//            pcb.releaseAllResources();
+            // 释放内存
+            Platform.runLater(() -> MainController.systemKernel
+                    .getMemoryManager()
+                    .getMAA()
+                    .release(pcb.getPid()));
+            // 饼图
         }
     }
 }

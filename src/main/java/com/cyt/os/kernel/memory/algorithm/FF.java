@@ -38,5 +38,6 @@ public class FF extends MemoryAllocationAlgorithm {
         if (!isAllocated) {
             throw new MemoryException("内存不足，无法向进程P" + id + "分配大小为" + size + "KB的内存块");
         }
+        isAllocated = false;
     }
 }

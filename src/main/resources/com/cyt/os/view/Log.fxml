@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cyt.os.controller.Log">
+    <center>
+        <TextArea fx:id="console"/>
+    </center>
+    <bottom>
+        <Button  onAction="#button" text="Output">
+            <BorderPane.alignment>CENTER</BorderPane.alignment>
+            <BorderPane.margin><Insets top="5" left="5" right="5" bottom="5"/></BorderPane.margin>
+        </Button>
+    </bottom>
+</BorderPane>

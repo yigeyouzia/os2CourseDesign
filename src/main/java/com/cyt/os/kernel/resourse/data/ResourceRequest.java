@@ -1,5 +1,6 @@
 package com.cyt.os.kernel.resourse.data;
 
+import com.cyt.os.kernel.process.data.PCB;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -31,5 +32,13 @@ public class ResourceRequest {
         Collections.addAll(list, 1, 1, 1);
         resourceRequest.setSource(list);
         return resourceRequest;
+    }
+
+    public static ResourceRequest generateRemainRequest(PCB pcb) {
+        ResourceRequest r = new ResourceRequest();
+        r.setId(pcb.getPid());
+        List<Integer> list = pcb.getNeedR();
+        r.setSource(list);
+        return r;
     }
 }
