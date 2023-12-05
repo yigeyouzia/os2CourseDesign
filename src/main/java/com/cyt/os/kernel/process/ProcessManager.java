@@ -275,6 +275,10 @@ public class ProcessManager extends Thread {
         return cpuTime;
     }
 
+    public void reSetCpuTimeProperty() {
+        cpuTime.set("0");
+    }
+
     public static BankerAlgorithm getBA() {
         return ba;
     }

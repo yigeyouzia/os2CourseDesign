@@ -37,14 +37,14 @@
                         <MenuItem mnemonicParsing="false" text="换入换出"/>
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="实用工具(U)">
+                <!-- 工具栏目 -->
+                <Menu fx:id="toolBar" mnemonicParsing="false" text="实用工具(U)">
                     <items>
                         <MenuItem mnemonicParsing="false" text="一键运行所有实例"/>
                         <MenuItem mnemonicParsing="false" text="一键结束所有实例"/>
-                        <MenuItem mnemonicParsing="false" text="一键创建实例"/>
-                        <MenuItem mnemonicParsing="false" text="启动计时器"/>
+                        <MenuItem mnemonicParsing="false" text="一键清空实例"/>
+                        <MenuItem mnemonicParsing="false" text="查看内存分布"/>
                         <MenuItem mnemonicParsing="false" text="重置时间"/>
-                        <MenuItem mnemonicParsing="false" text="随机等待I/O"/>
                         <MenuItem mnemonicParsing="false" text="随机请求设备"/>
                     </items>
                 </Menu>
@@ -145,23 +145,13 @@
     <!--日志-->
     <right>
         <VBox alignment="TOP_CENTER">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="系统日志">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="内存空间">
                 <font>
                     <Font size="16.0"/>
                 </font>
             </Text>
-            <HBox prefHeight="500.0" prefWidth="279.0">
-                <children>
-                    <HBox prefHeight="875.0" prefWidth="249.0">
-                        <children>
-                            <TextArea prefHeight="875.0" prefWidth="265.0"/>
-                        </children>
-                        <HBox.margin>
-                            <Insets bottom="20" top="20"/>
-                        </HBox.margin>
-                    </HBox>
-                </children>
-            </HBox>
+            <VBox fx:id="memoryBank" prefHeight="500.0" prefWidth="279.0">
+            </VBox>
         </VBox>
 
     </right>

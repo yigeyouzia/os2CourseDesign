@@ -47,7 +47,7 @@ public class ResourceManager {
         return resourceC.get();
     }
 
-    public void allocate(ResourceRequest request) {
+    public synchronized void allocate(ResourceRequest request) {
         int id = request.getId();
         log.info("进程 " + id + " 正式分配资源");
 
@@ -64,7 +64,7 @@ public class ResourceManager {
      *
      * @param pcb 进程pcb
      */
-    public void release(PCB pcb) {
+    public synchronized void release(PCB pcb) {
         List<Integer> alocR = pcb.getAlocR();
         log.info(pcb.getUid() + " 释放资源 --" + alocR);
         resourceA.set(resourceA.get() + alocR.get(0));

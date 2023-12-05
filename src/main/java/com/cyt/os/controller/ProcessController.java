@@ -1,6 +1,8 @@
 package com.cyt.os.controller;
 
+import com.cyt.os.common.Config;
 import com.cyt.os.common.Operation;
+import com.cyt.os.enums.MemoryStatus;
 import com.cyt.os.enums.ProcessStatus;
 import com.cyt.os.kernel.memory.algorithm.MemoryAllocationAlgorithm;
 import com.cyt.os.kernel.memory.data.MemoryBlock;
@@ -12,15 +14,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ProgressBarTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import org.apache.log4j.Logger;
+import org.apache.log4j.chainsaw.Main;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -32,6 +38,12 @@ import java.util.List;
 public class ProcessController extends RootController {
 
     private static final Logger log = Logger.getLogger(ProcessController.class);
+    /* 使用工具 */
+    @FXML
+    private Menu toolBar;
+    /* 内存条可视化 */
+    @FXML
+    private VBox memoryBank;
     /* 内存分配算法 */
     @FXML
     private Menu memoryAlg;
@@ -112,9 +124,12 @@ public class ProcessController extends RootController {
         initBlockTable();
         /* 内存调度算法  */
         initMemoryAlg();
+        /* 内存条可视化 */
+        updateMemoryBank();
         /* 资源饼图 */
         updateResource(0, 0, 0);
-        /* 内存条 */
+        /* 使用工具 */
+        initToolBar();
         // 开启调度算法线程
         MainController.systemKernel.start();
     }
@@ -171,7 +186,6 @@ public class ProcessController extends RootController {
     public void continuePSA(ActionEvent actionEvent) {
         log.warn("继续进程");
         pcsMgr.continuePSA();
-        MainController.systemKernel.getMemoryManager().getMAA().showMemory();
     }
 
     private void initTable() {
@@ -210,6 +224,7 @@ public class ProcessController extends RootController {
         items.forEach(item -> {
             //item1的单击事件
             item.setOnAction(event -> {
+                // 得到文本信息
                 MenuItem source = (MenuItem) event.getSource();
                 String text = source.getText();
                 try {
@@ -285,5 +300,43 @@ public class ProcessController extends RootController {
         ResourcePieA.setData(a);
         ResourcePieB.setData(b);
         ResourcePieC.setData(c);
+    }
+
+
+    /* 更新内存 */
+    public void updateMemoryBank() {
+        memoryBank.setPadding(new Insets(30, 10, 10, 10));
+        // memoryBank.setSpacing(20);
+        // 清除原来的矩形
+        memoryBank.getChildren().clear();
+        ObservableList<MemoryBlock> memoryList = MainController.systemKernel
+                .getMemoryManager()
+                .getMemoryList();
+        // 遍历添加矩形
+        memoryList.forEach(item -> {
+            Rectangle r = new Rectangle(Config.BASE_MEMORY_HEIGHT,
+                    (double) item.getSize() / Config.BASE_MEMORY_SCALE);
+            if (item.getStatus() == MemoryStatus.FREE) {
+                r.setFill(Color.GREEN);
+            } else {
+                r.setFill(Color.RED);
+            }
+            memoryBank.getChildren().add(r);
+        });
+    }
+
+    /* 使用工具功能 */
+    private void initToolBar() {
+        ObservableList<MenuItem> items = toolBar.getItems();
+        // 2.一键清空所有实例
+        // 3查看内存分布
+        items.get(3).setOnAction(event -> MainController.systemKernel
+                .getMemoryManager()
+                .getMAA()
+                .showMemory());
+        // 4.重置cpu时间为0
+        items.get(4).setOnAction(event -> MainController.systemKernel
+                .getProcessManager()
+                .reSetCpuTimeProperty());
     }
 }

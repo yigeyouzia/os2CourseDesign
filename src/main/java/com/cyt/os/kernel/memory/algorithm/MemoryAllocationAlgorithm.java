@@ -1,5 +1,7 @@
 package com.cyt.os.kernel.memory.algorithm;
 
+import com.cyt.os.common.Context;
+import com.cyt.os.controller.ProcessController;
 import com.cyt.os.enums.MemoryStatus;
 import com.cyt.os.kernel.memory.data.MemoryBlock;
 import com.cyt.os.kernel.process.data.PCB;
@@ -135,8 +137,8 @@ public abstract class MemoryAllocationAlgorithm {
     }
 
     private void update() {
-//        MemoryController controller = (MemoryController) Context.controllerMap.get("Memory");
-//        controller.update();
+        ProcessController controller = (ProcessController) Context.controllerMap.get("Process");
+        controller.updateMemoryBank();
     }
 
     public List<MemoryBlock> getMemoryList() {
