@@ -1,20 +1,39 @@
-2023-12-02 20:24:05 INFO  ProcessController:238 - 更新饼图： 000
-2023-12-02 20:24:09 INFO  ProcessManager:98 - fenpei: 128
-2023-12-02 20:24:09 INFO  FF:31 - FF算法查询次数： 1
-2023-12-02 20:24:09 INFO  FF:34 - 成功向进程P26843分配大小为128KB的内存块
-2023-12-02 20:24:09 INFO  ProcessManager:105 - req[1, 1, 1]
-2023-12-02 20:24:09 INFO  BankerAlgorithm:42 - **********进程P26843  进入银行家算法 *************
-2023-12-02 20:24:09 INFO  BankerAlgorithm:87 - 进程P26843  尝试试探性分配
-2023-12-02 20:24:09 INFO  BankerAlgorithm:103 - 试探完毕： 
-2023-12-02 20:24:09 INFO  BankerAlgorithm:104 - available:[9, 9, 9]
-2023-12-02 20:24:09 INFO  BankerAlgorithm:132 - 进入安全性检测算法
-2023-12-02 20:24:09 INFO  BankerAlgorithm:170 - 资源  26843 回收完毕
-2023-12-02 20:24:09 INFO  BankerAlgorithm:184 - 此时资源安全
-2023-12-02 20:24:09 INFO  BankerAlgorithm:67 - 进程P26843  的资源请求：[1, 1, 1] 通过
-2023-12-02 20:24:09 INFO  ResourceManager:52 - 进程 26843 正式分配资源
-2023-12-02 20:24:09 INFO  ResourceManager:58 - 当前资源： 9-9-9
-2023-12-02 20:24:09 INFO  ProcessController:238 - 更新饼图： 999
-2023-12-02 20:24:09 INFO  ProcessManager:109 - 设置
-2023-12-02 20:24:13 WARN  ProcessController:160 - 暂停进程
-2023-12-02 20:24:21 WARN  ProcessController:160 - 暂停进程
-2023-12-02 20:24:33 WARN  ProcessController:165 - 继续进程
+2023-12-05 11:08:37 INFO  ProcessController:273 - 更新饼图： 000
+2023-12-05 11:08:40 WARN  ProcessController:172 - 继续进程
+2023-12-05 11:08:50 INFO  MemoryManager:61 - 修改内存分配算法： FF
+2023-12-05 11:09:01 INFO  MemoryManager:61 - 修改内存分配算法： WF
+2023-12-05 11:09:03 INFO  ProcessManager:98 - fenpei: 184
+2023-12-05 11:09:03 INFO  WF:41 - 成功向进程P34374分配大小为184KB的内存块
+2023-12-05 11:09:03 INFO  ProcessManager:105 - req[1, 1, 1]
+2023-12-05 11:09:03 INFO  BankerAlgorithm:42 - **********进程P34374  进入银行家算法 *************
+2023-12-05 11:09:03 INFO  BankerAlgorithm:87 - 进程P34374  尝试试探性分配
+2023-12-05 11:09:03 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-05 11:09:03 INFO  BankerAlgorithm:104 - available:[9, 9, 9]
+2023-12-05 11:09:03 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-05 11:09:03 INFO  BankerAlgorithm:170 - 资源  34374 回收完毕
+2023-12-05 11:09:03 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-05 11:09:03 INFO  BankerAlgorithm:67 - 进程P34374  的资源请求：[1, 1, 1] 通过
+2023-12-05 11:09:03 INFO  ResourceManager:52 - 进程 34374 正式分配资源
+2023-12-05 11:09:03 INFO  ResourceManager:58 - 当前资源： 9-9-9
+2023-12-05 11:09:03 INFO  ProcessController:273 - 更新饼图： 999
+2023-12-05 11:09:03 INFO  ProcessManager:109 - 设置
+2023-12-05 11:09:04 WARN  ProcessController:172 - 继续进程
+2023-12-05 11:09:21 INFO  MemoryManager:61 - 修改内存分配算法： FF
+2023-12-05 11:09:23 INFO  ProcessManager:98 - fenpei: 199
+2023-12-05 11:09:23 INFO  FF:31 - FF算法查询次数： 1
+2023-12-05 11:09:23 INFO  FF:34 - 成功向进程P17281分配大小为199KB的内存块
+2023-12-05 11:09:23 INFO  ProcessManager:105 - req[1, 1, 1]
+2023-12-05 11:09:23 INFO  BankerAlgorithm:42 - **********进程P17281  进入银行家算法 *************
+2023-12-05 11:09:23 INFO  BankerAlgorithm:87 - 进程P17281  尝试试探性分配
+2023-12-05 11:09:23 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-05 11:09:23 INFO  BankerAlgorithm:104 - available:[8, 8, 8]
+2023-12-05 11:09:23 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-05 11:09:23 INFO  BankerAlgorithm:170 - 资源  17281 回收完毕
+2023-12-05 11:09:23 INFO  BankerAlgorithm:170 - 资源  34374 回收完毕
+2023-12-05 11:09:23 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-05 11:09:23 INFO  BankerAlgorithm:67 - 进程P17281  的资源请求：[1, 1, 1] 通过
+2023-12-05 11:09:23 INFO  ResourceManager:52 - 进程 17281 正式分配资源
+2023-12-05 11:09:23 INFO  ResourceManager:58 - 当前资源： 8-8-8
+2023-12-05 11:09:23 INFO  ProcessController:273 - 更新饼图： 888
+2023-12-05 11:09:23 INFO  ProcessManager:109 - 设置
+2023-12-05 11:09:26 WARN  ProcessController:172 - 继续进程

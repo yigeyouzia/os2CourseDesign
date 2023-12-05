@@ -22,6 +22,7 @@ public abstract class MemoryAllocationAlgorithm {
 
     boolean isAllocated = false;
 
+
     public MemoryAllocationAlgorithm(List<MemoryBlock> memoryList, Logger log) {
         this.memoryList = memoryList;
         this.log = log;
@@ -136,5 +137,9 @@ public abstract class MemoryAllocationAlgorithm {
     private void update() {
 //        MemoryController controller = (MemoryController) Context.controllerMap.get("Memory");
 //        controller.update();
+    }
+
+    public List<MemoryBlock> getMemoryList() {
+        return memoryList;
     }
 }

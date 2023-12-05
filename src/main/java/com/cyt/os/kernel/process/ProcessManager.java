@@ -303,12 +303,18 @@ public class ProcessManager extends Thread {
         synchronized (saThread) {
             saThread.suspend();
         }
+//        synchronized (this) {
+//            this.suspend();
+//        }
     }
 
     public void continuePSA() {
         synchronized (saThread) {
             saThread.resume();
         }
+//        synchronized (this) {
+//            this.resume();
+//        }
     }
 
     /**

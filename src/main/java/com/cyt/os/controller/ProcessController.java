@@ -2,6 +2,8 @@ package com.cyt.os.controller;
 
 import com.cyt.os.common.Operation;
 import com.cyt.os.enums.ProcessStatus;
+import com.cyt.os.kernel.memory.algorithm.MemoryAllocationAlgorithm;
+import com.cyt.os.kernel.memory.data.MemoryBlock;
 import com.cyt.os.kernel.process.ProcessManager;
 import com.cyt.os.kernel.process.algorithm.ProcessSchedulingAlgorithm;
 import com.cyt.os.kernel.process.data.PCB;
@@ -30,6 +32,9 @@ import java.util.List;
 public class ProcessController extends RootController {
 
     private static final Logger log = Logger.getLogger(ProcessController.class);
+    /* 内存分配算法 */
+    @FXML
+    private Menu memoryAlg;
 
     /* 调度算法 */
     @FXML
@@ -105,6 +110,8 @@ public class ProcessController extends RootController {
         initCbb();
         initReadyTable();
         initBlockTable();
+        /* 内存调度算法  */
+        initMemoryAlg();
         /* 资源饼图 */
         updateResource(0, 0, 0);
         /* 内存条 */
@@ -206,10 +213,38 @@ public class ProcessController extends RootController {
                 MenuItem source = (MenuItem) event.getSource();
                 String text = source.getText();
                 try {
-                    ProcessSchedulingAlgorithm psa = (ProcessSchedulingAlgorithm) Class.forName("com.cyt.os.kernel.process.algorithm." + text)
+                    ProcessSchedulingAlgorithm psa = (ProcessSchedulingAlgorithm) Class
+                            .forName("com.cyt.os.kernel.process.algorithm." + text)
                             .getConstructor(List.class)
                             .newInstance(pcsMgr.getReadyQueue());
                     pcsMgr.setPsa(psa);
+                } catch (ClassNotFoundException | NoSuchMethodException |
+                         InvocationTargetException | InstantiationException |
+                         IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        });
+    }
+
+    private void initMemoryAlg() {
+        ObservableList<MenuItem> items = memoryAlg.getItems();
+        items.forEach(item -> {
+            //item1的单击事件
+            item.setOnAction(event -> {
+                MenuItem source = (MenuItem) event.getSource();
+                String text = source.getText();
+                try {
+                    ObservableList<MemoryBlock> memoryList = MainController.systemKernel
+                            .getMemoryManager()
+                            .getMemoryList();
+                    MemoryAllocationAlgorithm maa = (MemoryAllocationAlgorithm) Class
+                            .forName("com.cyt.os.kernel.memory.algorithm." + text)
+                            .getConstructor(List.class)
+                            .newInstance(memoryList);
+                    MainController.systemKernel
+                            .getMemoryManager()
+                            .setMAA(maa);
                 } catch (ClassNotFoundException | NoSuchMethodException |
                          InvocationTargetException | InstantiationException |
                          IllegalAccessException e) {

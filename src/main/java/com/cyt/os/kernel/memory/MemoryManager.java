@@ -4,8 +4,10 @@ import com.cyt.os.enums.MemoryStatus;
 import com.cyt.os.kernel.memory.algorithm.FF;
 import com.cyt.os.kernel.memory.algorithm.MemoryAllocationAlgorithm;
 import com.cyt.os.kernel.memory.data.MemoryBlock;
+import com.cyt.os.kernel.process.ProcessManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.apache.log4j.Logger;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,6 +16,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @date 2023/11/28
  */
 public class MemoryManager {
+    public static final Logger log = Logger.getLogger(MemoryManager.class.getName());
+
 
     private final ObservableList<MemoryBlock> memoryList = FXCollections.observableArrayList();
 
@@ -54,6 +58,7 @@ public class MemoryManager {
     }
 
     public void setMAA(MemoryAllocationAlgorithm maa) {
+        log.info("修改内存分配算法： " + maa.getClass().getSimpleName());
         this.maa = maa;
     }
 

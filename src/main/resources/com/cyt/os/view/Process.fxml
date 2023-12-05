@@ -12,12 +12,16 @@
         <MenuBar prefHeight="4.0" prefWidth="978.0" BorderPane.alignment="CENTER">
             <menus>
                 <Menu fx:id="processAlg" mnemonicParsing="false" text="进程调度(P)">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="FCFS"/>
-                        <MenuItem mnemonicParsing="false" text="SJF"/>
-                        <MenuItem mnemonicParsing="false" text="PJF"/>
-                        <MenuItem mnemonicParsing="false" text="RR"/>
-                    </items>
+                    <MenuItem mnemonicParsing="false" text="FCFS"/>
+                    <MenuItem mnemonicParsing="false" text="SJF"/>
+                    <MenuItem mnemonicParsing="false" text="PJF"/>
+                    <MenuItem mnemonicParsing="false" text="RR"/>
+                </Menu>
+                <Menu fx:id="memoryAlg" mnemonicParsing="false" text="内存分配(M)">
+                    <MenuItem mnemonicParsing="false" text="FF"/>
+                    <MenuItem mnemonicParsing="false" text="BF"/>
+                    <MenuItem mnemonicParsing="false" text="NF"/>
+                    <MenuItem mnemonicParsing="false" text="WF"/>
                 </Menu>
                 <Menu mnemonicParsing="false" text="设备(D)">
                     <items>
