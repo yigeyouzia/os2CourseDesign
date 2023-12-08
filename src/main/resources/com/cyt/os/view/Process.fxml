@@ -85,20 +85,61 @@
                                                 <!--进程管理器-->
                                                 <TableView fx:id="tableProcess" prefHeight="470.0" prefWidth="1000.0">
                                                     <columns>
-                                                        <TableColumn fx:id="tcPId" prefWidth="80.0" text="pid"/>
-                                                        <TableColumn fx:id="tcUId" prefWidth="90.0" text="uid"/>
-                                                        <TableColumn fx:id="tcStatus" prefWidth="130.0" text="状态"/>
-                                                        <TableColumn fx:id="tcPriority" prefWidth="70.0" text="优先级"/>
-                                                        <TableColumn fx:id="tcProgress" prefWidth="90" text="进度"/>
-                                                        <TableColumn fx:id="tcMemory" prefWidth="90" text="所需内存"/>
-                                                        <TableColumn fx:id="tcArrivalTime" prefWidth="90.0"
-                                                                     text="到达时间"/>
-                                                        <TableColumn fx:id="tcServiceTime" prefWidth="90.0"
-                                                                     text="所需时间"/>
-                                                        <TableColumn fx:id="tcUsedTime" prefWidth="90.0"
-                                                                     text="已执行时间"/>
-                                                        <TableColumn fx:id="tcMaxR" prefWidth="90" text="Max"/>
-                                                        <TableColumn fx:id="tcNeedR" prefWidth="90" text="Need"/>
+                                                        <TableColumn fx:id="tcPId" prefWidth="80.0" text="pid">
+                                                            <graphic>
+                                                                <FontIcon fill="black" iconLiteral="fa-tasks"/>
+                                                            </graphic>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="tcUId" prefWidth="90.0" text="uid">
+                                                            <graphic>
+                                                                <FontIcon fill="black" iconLiteral="fa-user"/>
+                                                            </graphic>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="tcStatus" prefWidth="130.0" text="状态">
+                                                            <graphic>
+                                                                <FontIcon fill="black" iconLiteral="fa-circle"/>
+                                                            </graphic>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="tcPriority" prefWidth="70.0" text="优先级">
+                                                            <graphic>
+                                                                <FontIcon fill="black" iconLiteral="fa-sort-amount-desc"/>
+                                                            </graphic>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="tcProgress" prefWidth="90" text="进度">
+                                                            <graphic>
+                                                                <FontIcon fill="black" iconLiteral="fa-percent"/>
+                                                            </graphic>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="tcMemory" prefWidth="90" text="所需内存">
+                                                            <graphic>
+                                                                <FontIcon fill="black" iconLiteral="fa-th-large"/>
+                                                            </graphic>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="tcArrivalTime" prefWidth="90.0" text="到达时间">
+                                                            <graphic>
+                                                                <FontIcon fill="black" iconLiteral="fa-clock-o"/>
+                                                            </graphic>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="tcServiceTime" prefWidth="90.0" text="所需时间">
+                                                            <graphic>
+                                                                <FontIcon fill="black" iconLiteral="fa-hourglass-half"/>
+                                                            </graphic>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="tcUsedTime" prefWidth="90.0" text="已执行时间">
+                                                            <graphic>
+                                                                <FontIcon fill="black" iconLiteral="fa-clock-o"/>
+                                                            </graphic>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="tcMaxR" prefWidth="90" text="Max">
+                                                            <graphic>
+                                                                <FontIcon fill="black" iconLiteral="fa-database"/>
+                                                            </graphic>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="tcNeedR" prefWidth="90" text="Need">
+                                                            <graphic>
+                                                                <FontIcon fill="black" iconLiteral="fa-database"/>
+                                                            </graphic>
+                                                        </TableColumn>
                                                     </columns>
                                                 </TableView>
                                             </children>
@@ -107,7 +148,10 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab text="暂定">
+                        <Tab text="内外存">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-database"/>
+                            </graphic>
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
                             </content>
