@@ -6,6 +6,7 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author cyt
@@ -19,6 +20,8 @@ public class ResourceRequest {
     //请求的资源列表
     private List<Integer> source;
 
+    private static Random random = new Random();
+
     /**
      * 随机生成进程请求资源
      *
@@ -29,7 +32,11 @@ public class ResourceRequest {
         ResourceRequest resourceRequest = new ResourceRequest();
         resourceRequest.setId(id);
         ArrayList<Integer> list = new ArrayList<>();
-        Collections.addAll(list, 1, 1, 1);
+//        Collections.addAll(list, 1, 1, 1);
+        Collections.addAll(list,
+                random.nextInt(2) + 1,
+                random.nextInt(2) + 2,
+                random.nextInt(2) + 2);
         resourceRequest.setSource(list);
         return resourceRequest;
     }
