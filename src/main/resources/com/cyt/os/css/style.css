@@ -1,100 +1,69 @@
-/*.default-color2.chart-pie { -fx-pie-color: #ffdd40; }*/
-/*.default-color3.chart-pie { -fx-pie-color: #9abd57; }*/
-/*.default-color4.chart-pie { -fx-pie-color: #2bc9f7; }*/
-/*.default-color5.chart-pie { -fx-pie-color: #1cabbb; }*/
-/*.default-color6.chart-pie { -fx-pie-color: #2b73f7; }*/
-/*.default-color7.chart-pie { -fx-pie-color: #9760f1; }*/
 
-.box {
-    -fx-border-color: rgb(162, 162, 162);
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-padding: 5 5 5 5;
-}
-.CPU-box {
-    -fx-border-color: rgb(162, 162, 162);
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-padding: 5 5 5 5;
-    -fx-background-color: #ffdd40;
+/*!*table美化*!*/
+/*.table-view{*/
+/*    -fx-font-size: 14;    //修改表格字体的大小*/
+/*}*/
+/*!*表头的背景设置*!*/
+/*.table-view  .column-header-background {*/
+/*    -fx-background-color: #DBDBDB;*/
+/*}*/
+/*!*表头设置*!*/
+/*.table-view .column-header{*/
+/*    -fx-border-color:#ffffff;*/
+/*    -fx-border-width:0 1 0 0;     //这个是为了解决默认的边框*/
 
-}
+/*-fx-alignment: center;*/
+/*    !*-fx-pref-height: 46;    //高度设置*!*/
+/*}*/
+/*!*表格内容区域*!*/
+/*.table-view .placeholder {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
 
-.table-column {
-    -fx-alignment: center;
-}
+/*!*表格列*!*/
+/*.table-column {*/
+/*    !*-fx-pref-height: 30;*!*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-alignment: center;*/
 
-.btn-pm {
-    -fx-background-color: #66CCCC;
-    -fx-cursor: hand;
-    -fx-pref-width: 50;
-    -fx-pref-height: 25;
-}
+/*}*/
+
+/*!*表格内容区域每行的样式*!*/
+/*.table-row-cell {*/
+/*    -fx-background-color: #ffffff;*/
+/*}*/
+
+/*.table-row-cell:odd {*/
+/*    -fx-background-color: #E9F3FF;*/
+/*}*/
+
+/*.table-row-cell .table-cell {*/
+/*    -fx-border-width: 1px;*/
+/*}*/
+
+/*.table-row-cell:selected{*/
+/*    -fx-text-fill: black;*/
+/*    -fx-background-color: #007FE1;*/
+/*}*/
 
 
-.btn-shutdown, .btn-mini, .function {
-    -fx-background-color: TRANSPARENT;
-    -fx-pref-width: 50;
-    -fx-pref-height: 50;
-    -fx-cursor: hand;
-}
 
-.btn-shutdown Region {
-    -fx-background-color: gray;
-    -fx-max-width: 30;
-    -fx-max-height: 30;
-    -fx-shape: "M512 960A392 392 0 0 1 400 192.448v119.168A279.872 279.872 0 0 0 512 848a280 280 0 0 0 280-280A280 280 0 0 0 624 311.616V192.448A391.872 391.872 0 0 1 512 960zM456 120a56 56 0 0 1 112 0v448h-112v-448z";
-}
+/*.box {*/
+/*    -fx-border-color: rgb(162, 162, 162);*/
+/*    -fx-border-radius: 5px;*/
+/*    -fx-background-radius: 5px;*/
+/*    -fx-padding: 5 5 5 5;*/
+/*}*/
+/*.CPU-box {*/
+/*    -fx-border-color: rgb(162, 162, 162);*/
+/*    -fx-border-radius: 5px;*/
+/*    -fx-background-radius: 5px;*/
+/*    -fx-padding: 5 5 5 5;*/
+/*    -fx-background-color: #ffdd40;*/
 
-.btn-shutdown:hover Region {
-    -fx-background-color: red;
-}
+/*}*/
 
-.btn-mini Region {
-    -fx-background-color: gray;
-    -fx-max-width: 30;
-    -fx-max-height: 5;
-    -fx-shape: "M65.23884 456.152041 958.760137 456.152041l0 111.695918L65.23884 567.847959 65.23884 456.152041z";
-}
+/*.table-column {*/
+/*    -fx-alignment: center;*/
+/*}*/
 
-.btn-mini:hover Region {
-    -fx-background-color: white;
-}
-
-.function:hover {
-    -fx-background-color: white;
-    -fx-pref-width: 60;
-    -fx-pref-height: 60;
-}
-
-.function:hover Region {
-    -fx-max-width: 40;
-    -fx-max-height: 40;
-}
-
-.function Region {
-    -fx-background-color: gray;
-    -fx-max-width: 30;
-    -fx-max-height: 30;
-}
-
-.process Region {
-    -fx-shape: "M157 258L472.61 75.72a83.85 83.85 0 0 1 83.88 0L872.13 258a83.9 83.9 0 0 1 41.94 72.64v364.43a83.87 83.87 0 0 1-41.94 72.64L556.49 950a83.9 83.9 0 0 1-83.88 0L157 767.71a83.87 83.87 0 0 1-42-72.64V330.59A83.9 83.9 0 0 1 157 258z m359.58 622.8l317.59-185.72-2-367.92-319.61-182.25-317.63 185.68 2 367.92 315.63 182.24a4 4 0 0 0 2 0.55zM494.57 461.35l-125.21-72.29c-26.63-15.38-26.63-53.82 0-69.2l125.21-72.29a39.93 39.93 0 0 1 39.95 0l125.21 72.29c26.64 15.38 26.64 53.82 0 69.2l-125.21 72.29a40 40 0 0 1-39.95 0zM514.55 380.61l45.3-26.14-45.3-26.16-45.3 26.16 45.3 26.14zM480 555.88v144.57c0 30.76-33.3 50-59.93 34.6l-125.26-72.29a39.94 39.94 0 0 1-20-34.59V483.59c0-30.76 33.3-50 59.93-34.6L460 521.28a39.94 39.94 0 0 1 20 34.6zM400.04 578.95l-45.29-26.16-0.01 52.31 45.31 26.14-0.01-52.29zM569.12 521.28L694.33 449c26.64-15.38 59.93 3.84 59.93 34.6v144.57a39.92 39.92 0 0 1-20 34.59l-125.2 72.29c-26.64 15.38-59.93-3.84-59.93-34.6V555.88a39.93 39.93 0 0 1 19.99-34.6zM629.06 578.95l-0.01 52.29 45.3-26.14v-52.31l-45.29 26.16z";
-}
-
-.resource Region {
-    -fx-shape: "M881.06 919.69H147.39a81.52 81.52 0 0 1-81.52-81.52v-303.5a81.54 81.54 0 0 1 11.61-41.94l209.2-348.66a81.51 81.51 0 0 1 69.9-39.57h315.28a81.54 81.54 0 0 1 69.91 39.57L951 492.73a81.55 81.55 0 0 1 11.62 41.94v303.5a81.52 81.52 0 0 1-81.56 81.52z m0-81.52V534.66L671.85 186H356.56L147.39 534.68v303.49zM677.26 715.89H351.18a40.77 40.77 0 0 1-36.46-22.53l-70.25-140.51H106.63v-81.52h163a40.74 40.74 0 0 1 36.46 22.53l70.26 140.51h275.71l70.26-140.51a40.75 40.75 0 0 1 36.46-22.53h163v81.52H784l-70.28 140.51a40.77 40.77 0 0 1-36.46 22.53zM391.94 267.53m40.76 0l163.04 0q40.76 0 40.76 40.76l0 0q0 40.76-40.76 40.76l-163.04 0q-40.76 0-40.76-40.76l0 0q0-40.76 40.76-40.76ZM351.18 430.57m40.76 0l244.56 0q40.76 0 40.76 40.76l0 0q0 40.76-40.76 40.76l-244.56 0q-40.76 0-40.76-40.76l0 0q0-40.76 40.76-40.76Z";
-}
-
-.memory Region {
-    -fx-shape: "M889.27 378.3A56.42 56.42 0 0 0 927 431.42v418.46a75.46 75.46 0 0 1-75.46 75.45H398.82V736.7h-75.45v188.63H172.46A75.46 75.46 0 0 1 97 849.88V431.42a56.27 56.27 0 0 0 0-106.25V170.8a75.47 75.47 0 0 1 75.46-75.46h679.08A75.47 75.47 0 0 1 927 170.8v154.37a56.42 56.42 0 0 0-37.73 53.13z m-37.73 471.58V470.4a131.29 131.29 0 0 1 0-184.21V170.8H172.46v115.39a131.29 131.29 0 0 1 0 184.21v379.48h75.45V736.7a75.45 75.45 0 0 1 75.46-75.45h75.45a75.45 75.45 0 0 1 75.45 75.45v113.18zM549.73 661.25m37.73 0l-0.01 0q37.73 0 37.73 37.73l0 150.9q0 37.73-37.73 37.73l0.01 0q-37.73 0-37.73-37.73l0-150.9q0-37.73 37.73-37.73ZM700.63 661.25m37.73 0l-0.01 0q37.73 0 37.73 37.73l0 150.9q0 37.73-37.73 37.73l0.01 0q-37.73 0-37.73-37.73l0-150.9q0-37.73 37.73-37.73ZM662.91 548.07H361.09a75.46 75.46 0 0 1-75.45-75.46V359.43A75.45 75.45 0 0 1 361.09 284h301.82a75.45 75.45 0 0 1 75.45 75.45v113.16a75.46 75.46 0 0 1-75.45 75.46z m0-75.46V359.43H361.09v113.18z";
-}
-
-.function-box {
-    -fx-background-radius: 20;
-    -fx-background-color: derive(lightgray, 30%);
-}
-
-.main-root {
-    /*-fx-background-image: url("../image/background.jpg");*/
-}

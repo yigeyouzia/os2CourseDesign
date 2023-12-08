@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-<BorderPane stylesheets="@../css/style.css" prefWidth="1279.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane stylesheets="@../css/style.css"  prefWidth="1279.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.cyt.os.controller.ProcessController">
     <top>
         <MenuBar prefHeight="4.0" prefWidth="978.0" BorderPane.alignment="CENTER">
@@ -82,7 +82,7 @@
                                                 <!--进程管理器-->
                                                 <TableView fx:id="tableProcess" prefHeight="470.0" prefWidth="1000.0">
                                                     <columns>
-                                                        <TableColumn fx:id="tcPId" prefWidth="90.0" text="pid"/>
+                                                        <TableColumn fx:id="tcPId" prefWidth="80.0" text="pid"/>
                                                         <TableColumn fx:id="tcUId" prefWidth="90.0" text="uid"/>
                                                         <TableColumn fx:id="tcStatus" prefWidth="130.0" text="状态"/>
                                                         <TableColumn fx:id="tcPriority" prefWidth="70.0" text="优先级"/>
@@ -197,8 +197,8 @@
                     </Text>
                     <TableView fx:id="tableReady" prefHeight="600" prefWidth="300">
                         <columns>
-                            <TableColumn fx:id="tcUId1" prefWidth="100.0" text="uid"/>
-                            <TableColumn fx:id="tcStatus1" prefWidth="200.0" text="状态"/>
+                            <TableColumn fx:id="tcUId1" prefWidth="80.0" text="uid"/>
+                            <TableColumn fx:id="tcStatus1" prefWidth="180.0" text="状态"/>
                         </columns>
                     </TableView>
                 </VBox>
@@ -214,8 +214,8 @@
                     </Text>
                     <TableView fx:id="tableSuspend" prefHeight="600" prefWidth="300">
                         <columns>
-                            <TableColumn fx:id="tcUId2" prefWidth="100" text="uid"/>
-                            <TableColumn fx:id="tcStatus2" prefWidth="200.0" text="状态"/>
+                            <TableColumn fx:id="tcUId2" prefWidth="80" text="uid"/>
+                            <TableColumn fx:id="tcStatus2" prefWidth="160.0" text="状态"/>
                         </columns>
                     </TableView>
                 </VBox>

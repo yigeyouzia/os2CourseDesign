@@ -32,7 +32,8 @@ public class Operation {
             throw new RuntimeException(e);
         }
         Stage stage = new Stage();
-        stage.setScene(new Scene(root, 1400, 778));
+        Scene scene = new Scene(root, 1400, 778);
+        stage.setScene(scene);
         stage.setTitle(title);
         stage.setResizable(isResizeable);
 //        if (!"Main".equals(fxmlName)) {
