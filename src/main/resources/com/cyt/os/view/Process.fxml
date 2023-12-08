@@ -5,55 +5,128 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 
-<?import org.kordamp.ikonli.javafx.FontIcon?>
-<BorderPane stylesheets="@../css/style.css"  prefWidth="1279.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.cyt.os.controller.ProcessController">
+<BorderPane prefWidth="1279.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cyt.os.controller.ProcessController">
     <top>
         <MenuBar prefHeight="4.0" prefWidth="978.0" BorderPane.alignment="CENTER">
             <menus>
                 <Menu fx:id="processAlg" mnemonicParsing="false" text="进程调度(P)">
-                    <MenuItem mnemonicParsing="false" text="FCFS"/>
-                    <MenuItem mnemonicParsing="false" text="SJF"/>
-                    <MenuItem mnemonicParsing="false" text="PJF"/>
-                    <MenuItem mnemonicParsing="false" text="RR"/>
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-tasks" />
+                    </graphic>
+                    <MenuItem mnemonicParsing="false" text="FCFS" />
+                    <MenuItem mnemonicParsing="false" text="SJF" />
+                    <MenuItem mnemonicParsing="false" text="PJF" />
+                    <MenuItem mnemonicParsing="false" text="RR" />
                 </Menu>
                 <Menu fx:id="memoryAlg" mnemonicParsing="false" text="内存分配(M)">
-                    <MenuItem mnemonicParsing="false" text="FF"/>
-                    <MenuItem mnemonicParsing="false" text="BF"/>
-                    <MenuItem mnemonicParsing="false" text="NF"/>
-                    <MenuItem mnemonicParsing="false" text="WF"/>
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-database" />
+                    </graphic>
+                    <MenuItem mnemonicParsing="false" text="FF" />
+                    <MenuItem mnemonicParsing="false" text="BF" />
+                    <MenuItem mnemonicParsing="false" text="NF" />
+                    <MenuItem mnemonicParsing="false" text="WF" />
+
                 </Menu>
                 <Menu mnemonicParsing="false" text="设备(D)">
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-cog" />
+                    </graphic>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="打印机"/>
-                        <MenuItem mnemonicParsing="false" text="刻录机"/>
-                        <MenuItem mnemonicParsing="false" text="发声机"/>
+                        <MenuItem mnemonicParsing="false" text="打印机">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-print" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="刻录机">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-cog" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="发声机">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-volume-up" />
+                            </graphic>
+                        </MenuItem>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="更多(M)">
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-ellipsis-h" />
+                    </graphic>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="避免死锁(银行家算法)"/>
-                        <MenuItem mnemonicParsing="false" text="分配回收"/>
-                        <MenuItem mnemonicParsing="false" text="换入换出"/>
+                        <MenuItem mnemonicParsing="false" text="避免死锁(银行家算法)">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-bank" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="分配回收">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-recycle" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="换入换出">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-exchange" />
+                            </graphic>
+                        </MenuItem>
                     </items>
                 </Menu>
                 <!-- 工具栏目 -->
                 <Menu fx:id="toolBar" mnemonicParsing="false" text="实用工具(U)">
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-wrench" />
+                    </graphic>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="一键运行所有实例"/>
-                        <MenuItem mnemonicParsing="false" text="一键结束所有实例"/>
-                        <MenuItem mnemonicParsing="false" text="一键清空实例"/>
-                        <MenuItem mnemonicParsing="false" text="查看内存分布"/>
-                        <MenuItem mnemonicParsing="false" text="重置时间"/>
-                        <MenuItem mnemonicParsing="false" text="随机请求设备"/>
+                        <MenuItem mnemonicParsing="false" text="一键运行所有实例">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-play" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="一键清空实例">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-trash" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="查看内存分布">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-database" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="重置时间">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-clock-o" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="随机请求设备">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-random" />
+                            </graphic>
+                        </MenuItem>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="帮助(H)">
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-question-circle" />
+                    </graphic>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="关于"/>
-                        <MenuItem mnemonicParsing="false" text="联系我们"/>
-                        <MenuItem mnemonicParsing="false" text="版本"/>
+                        <MenuItem mnemonicParsing="false" text="关于">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-info-circle" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="联系我们">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-envelope" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="版本">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-code-fork" />
+                            </graphic>
+                        </MenuItem>
                     </items>
                 </Menu>
             </menus>
@@ -67,7 +140,7 @@
                     <tabs>
                         <Tab text="进程">
                             <graphic>
-                                <FontIcon fill="black" iconLiteral="fa-tasks"/>
+                                <FontIcon fill="black" iconLiteral="fa-tasks" />
                             </graphic>
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="1000.0">
@@ -76,10 +149,10 @@
                                             <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="进程表">
                                                     <font>
-                                                        <Font size="16.0"/>
+                                                        <Font size="16.0" />
                                                     </font>
                                                     <VBox.margin>
-                                                        <Insets bottom="10.0" top="10.0"/>
+                                                        <Insets bottom="10.0" top="10.0" />
                                                     </VBox.margin>
                                                 </Text>
                                                 <!--进程管理器-->
@@ -87,57 +160,57 @@
                                                     <columns>
                                                         <TableColumn fx:id="tcPId" prefWidth="80.0" text="pid">
                                                             <graphic>
-                                                                <FontIcon fill="black" iconLiteral="fa-tasks"/>
+                                                                <FontIcon fill="black" iconLiteral="fa-tasks" />
                                                             </graphic>
                                                         </TableColumn>
                                                         <TableColumn fx:id="tcUId" prefWidth="90.0" text="uid">
                                                             <graphic>
-                                                                <FontIcon fill="black" iconLiteral="fa-user"/>
+                                                                <FontIcon fill="black" iconLiteral="fa-windows" />
                                                             </graphic>
                                                         </TableColumn>
                                                         <TableColumn fx:id="tcStatus" prefWidth="130.0" text="状态">
                                                             <graphic>
-                                                                <FontIcon fill="black" iconLiteral="fa-circle"/>
+                                                                <FontIcon fill="black" iconLiteral="fa-circle" />
                                                             </graphic>
                                                         </TableColumn>
                                                         <TableColumn fx:id="tcPriority" prefWidth="70.0" text="优先级">
                                                             <graphic>
-                                                                <FontIcon fill="black" iconLiteral="fa-sort-amount-desc"/>
+                                                                <FontIcon fill="black" iconLiteral="fa-sort-amount-desc" />
                                                             </graphic>
                                                         </TableColumn>
                                                         <TableColumn fx:id="tcProgress" prefWidth="90" text="进度">
                                                             <graphic>
-                                                                <FontIcon fill="black" iconLiteral="fa-percent"/>
+                                                                <FontIcon fill="black" iconLiteral="fa-percent" />
                                                             </graphic>
                                                         </TableColumn>
                                                         <TableColumn fx:id="tcMemory" prefWidth="90" text="所需内存">
                                                             <graphic>
-                                                                <FontIcon fill="black" iconLiteral="fa-th-large"/>
+                                                                <FontIcon fill="black" iconLiteral="fa-th-large" />
                                                             </graphic>
                                                         </TableColumn>
                                                         <TableColumn fx:id="tcArrivalTime" prefWidth="90.0" text="到达时间">
                                                             <graphic>
-                                                                <FontIcon fill="black" iconLiteral="fa-clock-o"/>
+                                                                <FontIcon fill="black" iconLiteral="fa-clock-o" />
                                                             </graphic>
                                                         </TableColumn>
                                                         <TableColumn fx:id="tcServiceTime" prefWidth="90.0" text="所需时间">
                                                             <graphic>
-                                                                <FontIcon fill="black" iconLiteral="fa-hourglass-half"/>
+                                                                <FontIcon fill="black" iconLiteral="fa-hourglass-half" />
                                                             </graphic>
                                                         </TableColumn>
-                                                        <TableColumn fx:id="tcUsedTime" prefWidth="90.0" text="已执行时间">
+                                                        <TableColumn fx:id="tcUsedTime" prefWidth="100.0" text="已执行时间">
                                                             <graphic>
-                                                                <FontIcon fill="black" iconLiteral="fa-clock-o"/>
+                                                                <FontIcon fill="black" iconLiteral="fa-history" />
                                                             </graphic>
                                                         </TableColumn>
                                                         <TableColumn fx:id="tcMaxR" prefWidth="90" text="Max">
                                                             <graphic>
-                                                                <FontIcon fill="black" iconLiteral="fa-database"/>
+                                                                <FontIcon fill="black" iconLiteral="fa-database" />
                                                             </graphic>
                                                         </TableColumn>
-                                                        <TableColumn fx:id="tcNeedR" prefWidth="90" text="Need">
+                                                        <TableColumn fx:id="tcNeedR" prefWidth="85" text="Need">
                                                             <graphic>
-                                                                <FontIcon fill="black" iconLiteral="fa-database"/>
+                                                                <FontIcon fill="black" iconLiteral="fa-dashboard" />
                                                             </graphic>
                                                         </TableColumn>
                                                     </columns>
@@ -150,10 +223,10 @@
                         </Tab>
                         <Tab text="内外存">
                             <graphic>
-                                <FontIcon fill="black" iconLiteral="fa-database"/>
+                                <FontIcon fill="black" iconLiteral="fa-database" />
                             </graphic>
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                             </content>
                         </Tab>
                     </tabs>
@@ -166,66 +239,74 @@
             <children>
                 <Button mnemonicParsing="false" onAction="#createNewProcess" prefHeight="30" prefWidth="80" text="创建">
                     <graphic>
-                        <FontIcon fill="black" iconLiteral="fa-plus"/>
+                        <FontIcon fill="black" iconLiteral="fa-plus" />
                     </graphic>
                 </Button>
                 <Button mnemonicParsing="false" onAction="#destroyProcess" prefHeight="30" prefWidth="80" text="中止">
                     <graphic>
-                        <FontIcon fill="black" iconLiteral="fa-minus"/>
+                        <FontIcon fill="black" iconLiteral="fa-minus" />
                     </graphic>
                 </Button>
                 <Button mnemonicParsing="false" onAction="#suspendProcess" prefHeight="30" prefWidth="80" text="挂起">
                     <graphic>
-                        <FontIcon fill="black" iconLiteral="fa-pause"/>
+                        <FontIcon fill="black" iconLiteral="fa-pause" />
                     </graphic>
                 </Button>
                 <Button mnemonicParsing="false" onAction="#activeProcess" prefHeight="30" prefWidth="80" text="激活">
                     <graphic>
-                        <FontIcon fill="black" iconLiteral="fa-play"/>
+                        <FontIcon fill="black" iconLiteral="fa-play" />
                     </graphic>
                 </Button>
                 <Button mnemonicParsing="false" onAction="#stopPSA" prefHeight="30" prefWidth="80" text="暂停">
                     <graphic>
-                        <FontIcon fill="black" iconLiteral="fa-stop"/>
+                        <FontIcon fill="black" iconLiteral="fa-stop" />
                     </graphic>
                 </Button>
                 <Button mnemonicParsing="false" onAction="#continuePSA" prefHeight="30" prefWidth="80" text="继续">
                     <graphic>
-                        <FontIcon fill="black" iconLiteral="fa-forward"/>
+                        <FontIcon fill="black" iconLiteral="fa-forward" />
                     </graphic>
                 </Button>
 
-                <VBox styleClass="box,CPU-box" alignment="CENTER" spacing="20">
-                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CPU时间：" lineSpacing="10">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                        <HBox.margin>
-                            <Insets left="100.0" />
-                        </HBox.margin>
-                    </Text>
+                <VBox alignment="CENTER" spacing="20" styleClass="box,CPU-box">
+                        <Text lineSpacing="10" strokeType="OUTSIDE" strokeWidth="0.0" text="CPU时间：">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="100.0" />
+                            </HBox.margin>
+                        </Text>
+
                     <Text fx:id="txtCpuTime" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                         <font>
                             <Font size="14.0" />
                         </font>
                     </Text>
                 </VBox>
-
             </children>
             <padding>
-                <Insets top="50"/>
+                <Insets top="50" />
             </padding>
         </VBox>
     </center>
     <!--日志-->
     <right>
-        <VBox alignment="TOP_CENTER">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="内存空间">
-                <font>
-                    <Font size="16.0"/>
-                </font>
-            </Text>
-            <VBox fx:id="memoryBank" prefHeight="500.0" prefWidth="279.0">
+        <VBox alignment="TOP_CENTER" prefHeight="1181.0" prefWidth="167.0">
+            <HBox alignment="CENTER">
+                <Label>
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-file-text-o" />
+                    </graphic>
+                </Label>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="内存空间">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Text>
+            </HBox>
+
+            <VBox fx:id="memoryBank" prefHeight="500.0" prefWidth="200.0">
             </VBox>
         </VBox>
 
@@ -234,35 +315,66 @@
         <HBox prefHeight="233.0" prefWidth="1304.0" spacing="30" BorderPane.alignment="CENTER">
             <children>
                 <VBox alignment="TOP_CENTER">
-                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="就绪队列">
-                        <font>
-                            <Font size="16.0"/>
-                        </font>
-                        <VBox.margin>
-                            <Insets bottom="10.0"/>
-                        </VBox.margin>
-                    </Text>
+                    <HBox alignment="CENTER">
+                        <Label>
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-tasks" />
+                            </graphic>
+                        </Label>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="就绪队列">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="10.0" />
+                            </VBox.margin>
+                        </Text>
+                    </HBox>
                     <TableView fx:id="tableReady" prefHeight="600" prefWidth="300">
                         <columns>
-                            <TableColumn fx:id="tcUId1" prefWidth="80.0" text="uid"/>
-                            <TableColumn fx:id="tcStatus1" prefWidth="180.0" text="状态"/>
+                            <TableColumn fx:id="tcUId1" prefWidth="80.0" text="uid">
+                                <graphic>
+                                    <FontIcon fill="black" iconLiteral="fa-windows" />
+                                </graphic>
+                            </TableColumn>
+                            <TableColumn fx:id="tcStatus1" prefWidth="180.0" text="状态">
+                                <graphic>
+                                    <FontIcon fill="black" iconLiteral="fa-circle" />
+                                </graphic>
+                            </TableColumn>
                         </columns>
                     </TableView>
                 </VBox>
 
                 <VBox alignment="TOP_CENTER">
-                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="阻塞队列">
-                        <font>
-                            <Font size="16.0"/>
-                        </font>
-                        <VBox.margin>
-                            <Insets bottom="10.0"/>
-                        </VBox.margin>
-                    </Text>
+                    <HBox alignment="CENTER">
+                        <Label alignment="CENTER">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-pause" />
+                            </graphic>
+                        </Label>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="阻塞队列">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="10.0" />
+                            </VBox.margin>
+                        </Text>
+                    </HBox>
+
                     <TableView fx:id="tableSuspend" prefHeight="600" prefWidth="300">
                         <columns>
-                            <TableColumn fx:id="tcUId2" prefWidth="80" text="uid"/>
-                            <TableColumn fx:id="tcStatus2" prefWidth="160.0" text="状态"/>
+                            <TableColumn fx:id="tcUId2" prefWidth="80" text="uid">
+                                <graphic>
+                                    <FontIcon fill="black" iconLiteral="fa-windows" />
+                                </graphic>
+                            </TableColumn>
+                            <TableColumn fx:id="tcStatus2" prefWidth="160.0" text="状态">
+                                <graphic>
+                                    <FontIcon fill="black" iconLiteral="fa-circle" />
+                                </graphic>
+                            </TableColumn>
                         </columns>
                     </TableView>
                 </VBox>
@@ -271,15 +383,15 @@
                 <VBox alignment="CENTER" spacing="20">
                     <HBox>
                         <children>
-                            <PieChart fx:id="ResourcePieA" prefHeight="500" prefWidth="300"/>
-                            <PieChart fx:id="ResourcePieB" prefHeight="500" prefWidth="300"/>
-                            <PieChart fx:id="ResourcePieC" prefHeight="500" prefWidth="300"/>
+                            <PieChart fx:id="ResourcePieA" prefHeight="500" prefWidth="300" />
+                            <PieChart fx:id="ResourcePieB" prefHeight="500" prefWidth="300" />
+                            <PieChart fx:id="ResourcePieC" prefHeight="500" prefWidth="300" />
                         </children>
                     </HBox>
                 </VBox>
             </children>
             <padding>
-                <Insets bottom="20" left="20"/>
+                <Insets bottom="20" left="20" />
             </padding>
         </HBox>
     </bottom>

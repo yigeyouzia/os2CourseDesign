@@ -1,69 +1,93 @@
+/*button长度调整*/
+.button {
+    -fx-pref-width: 80;
+    -fx-pref-height: 30;
+}
+/*table美化*/
+.table-view{
+    -fx-font-size: 14;    //修改表格字体的大小
+}
+/*表头的背景设置*/
+.table-view  .column-header-background {
+    -fx-background-color: #DBDBDB;
+}
+/*表头设置*/
+.table-view .column-header{
+    -fx-border-color:#ffffff;
+    -fx-border-width:0 1 0 0;     //这个是为了解决默认的边框
 
-/*!*table美化*!*/
-/*.table-view{*/
-/*    -fx-font-size: 14;    //修改表格字体的大小*/
-/*}*/
-/*!*表头的背景设置*!*/
-/*.table-view  .column-header-background {*/
-/*    -fx-background-color: #DBDBDB;*/
-/*}*/
-/*!*表头设置*!*/
-/*.table-view .column-header{*/
-/*    -fx-border-color:#ffffff;*/
-/*    -fx-border-width:0 1 0 0;     //这个是为了解决默认的边框*/
+-fx-alignment: center;
+    /*-fx-pref-height: 46;    //高度设置*/
+}
+/*表格内容区域*/
+.table-view .placeholder {
+    -fx-background-color: transparent;
+}
 
-/*-fx-alignment: center;*/
-/*    !*-fx-pref-height: 46;    //高度设置*!*/
-/*}*/
-/*!*表格内容区域*!*/
-/*.table-view .placeholder {*/
-/*    -fx-background-color: transparent;*/
-/*}*/
+/*表格列*/
+.table-column {
+    /*-fx-pref-height: 30;*/
+    -fx-background-color: transparent;
+    -fx-alignment: center;
 
-/*!*表格列*!*/
-/*.table-column {*/
-/*    !*-fx-pref-height: 30;*!*/
-/*    -fx-background-color: transparent;*/
-/*    -fx-alignment: center;*/
+}
 
-/*}*/
+/*表格内容区域每行的样式*/
+.table-row-cell {
+    -fx-background-color: #ffffff;
+}
 
-/*!*表格内容区域每行的样式*!*/
-/*.table-row-cell {*/
-/*    -fx-background-color: #ffffff;*/
-/*}*/
+.table-row-cell:odd {
+    -fx-background-color: #E9F3FF;
+}
 
-/*.table-row-cell:odd {*/
-/*    -fx-background-color: #E9F3FF;*/
-/*}*/
+.table-row-cell .table-cell {
+    -fx-border-width: 1px;
+}
 
-/*.table-row-cell .table-cell {*/
-/*    -fx-border-width: 1px;*/
-/*}*/
-
-/*.table-row-cell:selected{*/
-/*    -fx-text-fill: black;*/
-/*    -fx-background-color: #007FE1;*/
-/*}*/
+.table-row-cell:selected{
+    -fx-text-fill: black;
+    -fx-background-color: #007FE1;
+}
 
 
 
-/*.box {*/
-/*    -fx-border-color: rgb(162, 162, 162);*/
-/*    -fx-border-radius: 5px;*/
-/*    -fx-background-radius: 5px;*/
-/*    -fx-padding: 5 5 5 5;*/
-/*}*/
-/*.CPU-box {*/
-/*    -fx-border-color: rgb(162, 162, 162);*/
-/*    -fx-border-radius: 5px;*/
-/*    -fx-background-radius: 5px;*/
-/*    -fx-padding: 5 5 5 5;*/
-/*    -fx-background-color: #ffdd40;*/
+.box {
+    -fx-border-color: rgb(162, 162, 162);
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5 5 5 5;
+}
+.CPU-box {
+    -fx-border-color: rgb(162, 162, 162);
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-color: #ffdd40;
 
-/*}*/
+}
 
-/*.table-column {*/
-/*    -fx-alignment: center;*/
-/*}*/
+.table-column {
+    -fx-alignment: center;
+}
 
+/*menuitem与menu大小一样并且水平居中*/
+.menu-item {
+    -fx-pref-width: 120;
+    -fx-pref-height: 30;
+    -fx-alignment: center;;
+}
+/*menuitem的背景颜色*/
+menuitem:selected{
+    -fx-background-color: #007FE1;
+}
+menuitem:focused{
+    -fx-background-color: #007FE1;
+}
+menuitem:hover{
+    -fx-background-color: #007FE1;
+}
+/*menuitem中的内容居中*/
+.menu-item .label {
+    -fx-content-display: center;
+}
