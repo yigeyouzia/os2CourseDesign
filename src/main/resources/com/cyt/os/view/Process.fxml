@@ -6,7 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane stylesheets="@../css/style.css"  prefWidth="1279.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<BorderPane stylesheets="@../css/style.css" prefWidth="1279.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.cyt.os.controller.ProcessController">
     <top>
         <MenuBar prefHeight="4.0" prefWidth="978.0" BorderPane.alignment="CENTER">
@@ -116,26 +117,53 @@
     <center>
         <VBox alignment="TOP_CENTER" prefHeight="1042.0" prefWidth="131.0" spacing="30" BorderPane.alignment="CENTER">
             <children>
-                <Button mnemonicParsing="false" onAction="#createNewProcess" prefHeight="30" prefWidth="80"
-                        text="创建"/>
-                <Button mnemonicParsing="false" onAction="#destroyProcess" prefHeight="30" prefWidth="80" text="中止"/>
-                <Button mnemonicParsing="false" onAction="#suspendProcess" prefHeight="30" prefWidth="80" text="挂起"/>
-                <Button mnemonicParsing="false" onAction="#activeProcess" prefHeight="30" prefWidth="80" text="激活"/>
-                <Button mnemonicParsing="false" onAction="#stopPSA" prefHeight="30" prefWidth="80" text="暂停"/>
-                <Button mnemonicParsing="false" onAction="#continuePSA" prefHeight="30" prefWidth="80" text="继续"/>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CPU时间：">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                    <HBox.margin>
-                        <Insets left="100.0" />
-                    </HBox.margin>
-                </Text>
-                <Text fx:id="txtCpuTime" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Text>
+                <Button mnemonicParsing="false" onAction="#createNewProcess" prefHeight="30" prefWidth="80" text="创建">
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-plus"/>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#destroyProcess" prefHeight="30" prefWidth="80" text="中止">
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-minus"/>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#suspendProcess" prefHeight="30" prefWidth="80" text="挂起">
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-pause"/>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#activeProcess" prefHeight="30" prefWidth="80" text="激活">
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-play"/>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#stopPSA" prefHeight="30" prefWidth="80" text="暂停">
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-stop"/>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#continuePSA" prefHeight="30" prefWidth="80" text="继续">
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-forward"/>
+                    </graphic>
+                </Button>
+
+                <VBox styleClass="box,CPU-box" alignment="CENTER" spacing="20">
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CPU时间：" lineSpacing="10">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                        <HBox.margin>
+                            <Insets left="100.0" />
+                        </HBox.margin>
+                    </Text>
+                    <Text fx:id="txtCpuTime" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </Text>
+                </VBox>
+
             </children>
             <padding>
                 <Insets top="50"/>
