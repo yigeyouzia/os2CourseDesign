@@ -66,6 +66,9 @@
                 <TabPane prefHeight="1187.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                         <Tab text="进程">
+                            <graphic>
+                                <FontIcon fill="black" iconLiteral="fa-tasks"/>
+                            </graphic>
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="1000.0">
                                     <children>
