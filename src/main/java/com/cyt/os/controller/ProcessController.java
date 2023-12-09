@@ -324,14 +324,18 @@ public class ProcessController extends RootController {
     /* 使用工具功能 */
     private void initToolBar() {
         ObservableList<MenuItem> items = toolBar.getItems();
-        // 2.一键清空所有实例
-        // 3查看内存分布
-        items.get(3).setOnAction(event -> MainController.systemKernel
+        // 1.一键清空所有实例
+        items.get(1).setOnAction(event -> {
+            log.warn("清空实例");
+            tableProcess.getItems().clear();
+        });
+        // 2.查看内存分布
+        items.get(2).setOnAction(event -> MainController.systemKernel
                 .getMemoryManager()
                 .getMAA()
                 .showMemory());
-        // 4.重置cpu时间为0
-        items.get(4).setOnAction(event -> MainController.systemKernel
+        // 3.重置cpu时间为0
+        items.get(3).setOnAction(event -> MainController.systemKernel
                 .getProcessManager()
                 .reSetCpuTimeProperty());
     }

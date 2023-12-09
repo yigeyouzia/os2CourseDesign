@@ -21,6 +21,11 @@ public class BF extends MemoryAllocationAlgorithm {
         super(memoryList, log);
     }
 
+    /**
+     *
+     * @param size 所需内存大小
+     * @param id   进程pid
+     */
     @Override
     public void allocateMemory(int size, int id) {
         MemoryBlock bestBlock = null;
