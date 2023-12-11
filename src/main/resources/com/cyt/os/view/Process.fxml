@@ -322,7 +322,7 @@
                         </font>
                     </Text>
                 </HBox>
-                <VBox fx:id="memoryBank11" prefHeight="460.0" prefWidth="1.0" alignment="TOP_CENTER">
+                <VBox fx:id="hdd" prefHeight="460.0" prefWidth="1.0" alignment="TOP_CENTER">
                 </VBox>
             </VBox>
         </HBox>
