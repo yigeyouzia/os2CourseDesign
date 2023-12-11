@@ -10,6 +10,7 @@ import com.cyt.os.kernel.page.PageManager;
 import com.cyt.os.kernel.process.ProcessManager;
 import com.cyt.os.kernel.process.algorithm.ProcessSchedulingAlgorithm;
 import com.cyt.os.kernel.process.data.PCB;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -397,5 +398,17 @@ public class ProcessController extends RootController {
             tableProcess.getItems().remove(0);
         }
         tableProcess.getItems().add(currentPage);
+    }
+
+    /* 回收页面 */
+    public void recyclePage() {
+        PCB pcb = getPCB();
+        if (pcb != null) {
+            Platform.runLater(() -> MainController.systemKernel
+                    .getMemoryManager()
+                    .getMAA()
+                    .release(pcb.getPid()));
+            tableProcess.getItems().remove(pcb);
+        }
     }
 }

@@ -263,6 +263,12 @@
                     </graphic>
                 </Button>
 
+                <Button mnemonicParsing="false" onAction="#recyclePage" prefHeight="30" prefWidth="80" text="回收">
+                    <graphic>
+                        <FontIcon fill="black" iconLiteral="fa-recycle" />
+                    </graphic>
+                </Button>
+
                 <VBox alignment="CENTER" spacing="20" styleClass="box,CPU-box">
                         <Text lineSpacing="10" strokeType="OUTSIDE" strokeWidth="0.0" text="CPU时间：">
                             <font>
