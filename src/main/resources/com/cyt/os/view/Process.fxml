@@ -292,22 +292,40 @@
     </center>
     <!--内存条-->
     <right>
-        <VBox alignment="TOP_CENTER" prefHeight="1181.0" prefWidth="167.0">
-            <HBox alignment="CENTER">
-                <Label>
-                    <graphic>
-                        <FontIcon fill="black" iconLiteral="fa-file-text-o" />
-                    </graphic>
-                </Label>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="内存空间">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Text>
-            </HBox>
-            <VBox fx:id="memoryBank" prefHeight="500.0" prefWidth="200.0">
+        <HBox>
+            <VBox prefHeight="1181.0" prefWidth="167.0">
+                <HBox alignment="TOP_CENTER">
+                    <Label>
+                        <graphic>
+                            <FontIcon fill="black" iconLiteral="fa-hdd-o" />
+                        </graphic>
+                    </Label>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="内存空间">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
+                    </Text>
+                </HBox>
+                <VBox fx:id="memoryBank" prefHeight="460.0" prefWidth="1.0" alignment="TOP_CENTER">
+                </VBox>
             </VBox>
-        </VBox>
+            <VBox prefHeight="1181.0" prefWidth="167.0">
+                <HBox alignment="CENTER">
+                    <Label>
+                        <graphic>
+                            <FontIcon fill="black" iconLiteral="fa-hdd-o" />
+                        </graphic>
+                    </Label>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="磁盘">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
+                    </Text>
+                </HBox>
+                <VBox fx:id="memoryBank11" prefHeight="460.0" prefWidth="1.0" alignment="TOP_CENTER">
+                </VBox>
+            </VBox>
+        </HBox>
 
     </right>
     <bottom>
