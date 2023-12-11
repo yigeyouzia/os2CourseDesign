@@ -306,7 +306,9 @@ public class ProcessController extends RootController {
 
     /* 更新内存 */
     public void updateMemoryBank() {
-        memoryBank.setPadding(new Insets(30, 10, 10, 10));
+//        memoryBank.setPadding(new Insets(30, 10, 10, 10));
+
+
         // memoryBank.setSpacing(20);
         // 清除原来的矩形
         memoryBank.getChildren().clear();
