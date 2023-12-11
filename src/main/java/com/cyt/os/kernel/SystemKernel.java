@@ -1,6 +1,7 @@
 package com.cyt.os.kernel;
 
 import com.cyt.os.kernel.memory.MemoryManager;
+import com.cyt.os.kernel.page.PageManager;
 import com.cyt.os.kernel.process.ProcessManager;
 import com.cyt.os.kernel.resourse.ResourceManager;
 import lombok.Data;
@@ -22,6 +23,9 @@ public class SystemKernel {
 
     /* 资源管理 */
     private final ResourceManager resourceManager = new ResourceManager();
+
+    /* 页面管理 */
+    private final PageManager pageManager = new PageManager();
 
 
     /**

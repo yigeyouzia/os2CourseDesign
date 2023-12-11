@@ -67,11 +67,6 @@
                                 <FontIcon fill="black" iconLiteral="fa-recycle" />
                             </graphic>
                         </MenuItem>
-                        <MenuItem mnemonicParsing="false" text="换入换出">
-                            <graphic>
-                                <FontIcon fill="black" iconLiteral="fa-exchange" />
-                            </graphic>
-                        </MenuItem>
                     </items>
                 </Menu>
                 <!-- 工具栏目 -->
@@ -100,7 +95,7 @@
                                 <FontIcon fill="black" iconLiteral="fa-clock-o" />
                             </graphic>
                         </MenuItem>
-                        <MenuItem mnemonicParsing="false" text="随机请求设备">
+                        <MenuItem mnemonicParsing="false" text="换入换出-LRU">
                             <graphic>
                                 <FontIcon fill="black" iconLiteral="fa-random" />
                             </graphic>

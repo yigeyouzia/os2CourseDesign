@@ -6,6 +6,7 @@ import com.cyt.os.enums.MemoryStatus;
 import com.cyt.os.enums.ProcessStatus;
 import com.cyt.os.kernel.memory.algorithm.MemoryAllocationAlgorithm;
 import com.cyt.os.kernel.memory.data.MemoryBlock;
+import com.cyt.os.kernel.page.PageManager;
 import com.cyt.os.kernel.process.ProcessManager;
 import com.cyt.os.kernel.process.algorithm.ProcessSchedulingAlgorithm;
 import com.cyt.os.kernel.process.data.PCB;
@@ -79,6 +80,8 @@ public class ProcessController extends RootController {
     private PieChart ResourcePieC;
     /* 进程管理器 */
     private ProcessManager pcsMgr;
+    /* 页面管理器 */
+    private PageManager pageMgr;
 
     /* 进程表格列 */
     @FXML
@@ -114,6 +117,7 @@ public class ProcessController extends RootController {
     @FXML
     void initialize() {
         pcsMgr = MainController.systemKernel.getProcessManager();
+        pageMgr = MainController.systemKernel.getPageManager();
         // CPU时间
         txtCpuTime.textProperty().bind(pcsMgr.getCpuTimeProperty());
 
@@ -371,8 +375,9 @@ public class ProcessController extends RootController {
         items.get(4).setOnAction(event -> SwapInAndOut());
     }
 
+    /* 换入换出算法 */
     private void SwapInAndOut() {
-        PCB currentPage = pcsMgr.createPage();
+        PCB currentPage = pageMgr.createPage();
 
         ObservableList<PCB> items = tableProcess.getItems();
 
