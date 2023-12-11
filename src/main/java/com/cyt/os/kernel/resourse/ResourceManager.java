@@ -4,8 +4,6 @@ import com.cyt.os.common.Config;
 import com.cyt.os.common.Context;
 import com.cyt.os.controller.ProcessController;
 import com.cyt.os.kernel.process.data.PCB;
-import com.cyt.os.kernel.resourse.algorithm.BankerAlgorithm;
-import com.cyt.os.kernel.resourse.data.ResourceA;
 import com.cyt.os.kernel.resourse.data.ResourceRequest;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

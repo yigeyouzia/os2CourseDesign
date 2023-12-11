@@ -46,7 +46,7 @@ public class PageManager {
                     getMAA().
                     allocateMemory(pcb.getMemorySize(), pcb.getPid());
             // 分配资源
-            pcb.setStatus(ProcessStatus.ACTIVE_READY);
+            pcb.setStatus(ProcessStatus.PAGE);
         } catch (RuntimeException e) {
             log.error(e.getMessage());
         }

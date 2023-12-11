@@ -17,5 +17,8 @@ public enum ProcessStatus {
     /* 创建状态 */
     CREATE,
     /* 终止状态 */
-    DESTROY
+    DESTROY,
+
+    /* Page专用 */
+    PAGE;
 }

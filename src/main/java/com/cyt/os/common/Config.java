@@ -40,4 +40,8 @@ public class Config {
     /* LRU int capacity = 3; */
     public static final int LRU_CAPACITY = 3;
 
+    /* page页面最大值 */
+    public static final int PAGE_MAX_NUM = 5;
+
+
 }

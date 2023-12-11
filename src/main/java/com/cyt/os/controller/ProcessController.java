@@ -4,6 +4,7 @@ import com.cyt.os.common.Config;
 import com.cyt.os.common.Operation;
 import com.cyt.os.enums.MemoryStatus;
 import com.cyt.os.enums.ProcessStatus;
+import com.cyt.os.exception.PageNotFoundException;
 import com.cyt.os.kernel.memory.algorithm.MemoryAllocationAlgorithm;
 import com.cyt.os.kernel.memory.data.MemoryBlock;
 import com.cyt.os.kernel.page.PageManager;
@@ -168,26 +169,38 @@ public class ProcessController extends RootController {
 
     public void destroyProcess(ActionEvent actionEvent) {
         log.error("销毁进程");
-        PCB pcb = getPCB();
-        if (pcb != null) {
-            pcsMgr.destroy(pcb.getPid());
+        try {
+            PCB pcb = getPCB();
+            if (pcb != null) {
+                pcsMgr.destroy(pcb.getPid());
+            }
+        } catch (PageNotFoundException e) {
+            log.error(e.getMessage());
         }
     }
 
     public void suspendProcess(ActionEvent actionEvent) {
         log.warn("挂起进程");
-        PCB pcb = getPCB();
-        if (pcb != null) {
-            pcsMgr.suspend(pcb.getPid());
-            tableSuspend.setItems(pcsMgr.getBlockQueue());
+        try {
+            PCB pcb = getPCB();
+            if (pcb != null) {
+                pcsMgr.suspend(pcb.getPid());
+                tableSuspend.setItems(pcsMgr.getBlockQueue());
+            }
+        } catch (PageNotFoundException e) {
+            log.error(e.getMessage());
         }
     }
 
     public void activeProcess(ActionEvent actionEvent) {
         log.warn("激活进程");
-        PCB pcb = getPCB();
-        if (pcb != null) {
-            pcsMgr.active(pcb.getPid());
+        try {
+            PCB pcb = getPCB();
+            if (pcb != null) {
+                pcsMgr.active(pcb.getPid());
+            }
+        } catch (PageNotFoundException e) {
+            log.error(e.getMessage());
         }
     }
 
@@ -291,6 +304,26 @@ public class ProcessController extends RootController {
             Operation.showErrorAlert("请先选中一个进程！");
         } else {
             pcb = tableProcess.getSelectionModel().getSelectedItem();
+            if (pcb.getPid() <= Config.PAGE_MAX_NUM) {
+                Operation.showErrorAlert("不能选择页面！");
+                throw new PageNotFoundException("不能选择页面");
+            }
+        }
+        log.info(pcb);
+        return pcb;
+    }
+
+    /* 选择页面 */
+    private PCB getPage() {
+        PCB pcb = null;
+        if (tableProcess.getSelectionModel().isEmpty()) {
+            Operation.showErrorAlert("请先选中一个页面！");
+        } else {
+            pcb = tableProcess.getSelectionModel().getSelectedItem();
+            if (pcb.getPid() >= Config.PAGE_MAX_NUM) {
+                Operation.showErrorAlert("不能选择进程！");
+                throw new PageNotFoundException("不能选择进程");
+            }
         }
         log.info(pcb);
         return pcb;
@@ -402,13 +435,17 @@ public class ProcessController extends RootController {
 
     /* 回收页面 */
     public void recyclePage() {
-        PCB pcb = getPCB();
-        if (pcb != null) {
-            Platform.runLater(() -> MainController.systemKernel
-                    .getMemoryManager()
-                    .getMAA()
-                    .release(pcb.getPid()));
-            tableProcess.getItems().remove(pcb);
+        try {
+            PCB pcb = getPage();
+            if (pcb != null) {
+                Platform.runLater(() -> MainController.systemKernel
+                        .getMemoryManager()
+                        .getMAA()
+                        .release(pcb.getPid()));
+                tableProcess.getItems().remove(pcb);
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage());
         }
     }
 }
