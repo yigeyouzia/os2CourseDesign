@@ -290,7 +290,7 @@
             </padding>
         </VBox>
     </center>
-    <!--日志-->
+    <!--内存条-->
     <right>
         <VBox alignment="TOP_CENTER" prefHeight="1181.0" prefWidth="167.0">
             <HBox alignment="CENTER">
@@ -305,7 +305,6 @@
                     </font>
                 </Text>
             </HBox>
-
             <VBox fx:id="memoryBank" prefHeight="500.0" prefWidth="200.0">
             </VBox>
         </VBox>

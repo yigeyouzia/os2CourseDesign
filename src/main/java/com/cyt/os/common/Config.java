@@ -23,7 +23,7 @@ public class Config {
     public static final int TIME_SLICE_5 = 5;
 
     /* 内存可视化基础宽度 */
-    public static final int BASE_MEMORY_HEIGHT = 300;
+    public static final int BASE_MEMORY_WIDTH = 100;
     /* 内存可视化比例 */
     public static final int BASE_MEMORY_SCALE = 20;
 

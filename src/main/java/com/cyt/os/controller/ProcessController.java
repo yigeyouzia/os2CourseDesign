@@ -37,6 +37,11 @@ public class ProcessController extends RootController {
     /* 使用工具 */
     @FXML
     private Menu toolBar;
+
+    /* 外存 */
+    @FXML
+    private VBox externalStorage;
+
     /* 内存条可视化 */
     @FXML
     private VBox memoryBank;
@@ -310,7 +315,7 @@ public class ProcessController extends RootController {
                 .getMemoryList();
         // 遍历添加矩形
         memoryList.forEach(item -> {
-            Rectangle r = new Rectangle(Config.BASE_MEMORY_HEIGHT,
+            Rectangle r = new Rectangle(Config.BASE_MEMORY_WIDTH,
                     (double) item.getSize() / Config.BASE_MEMORY_SCALE);
             if (item.getStatus() == MemoryStatus.FREE) {
                 r.setFill(Color.GREEN);
