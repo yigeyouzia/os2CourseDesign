@@ -1,5 +1,6 @@
 package com.cyt.os.kernel.resourse;
 
+import com.cyt.os.common.Config;
 import com.cyt.os.common.Context;
 import com.cyt.os.controller.ProcessController;
 import com.cyt.os.kernel.process.data.PCB;
@@ -28,9 +29,9 @@ public class ResourceManager {
     private final IntegerProperty resourceC;
 
     public ResourceManager() {
-        this.resourceA = new SimpleIntegerProperty(10);
-        this.resourceB = new SimpleIntegerProperty(10);
-        this.resourceC = new SimpleIntegerProperty(10);
+        this.resourceA = new SimpleIntegerProperty(Config.RESOURCE_A);
+        this.resourceB = new SimpleIntegerProperty(Config.RESOURCE_B);
+        this.resourceC = new SimpleIntegerProperty(Config.RESOURCE_C);
     }
 
     public int getResourceA() {

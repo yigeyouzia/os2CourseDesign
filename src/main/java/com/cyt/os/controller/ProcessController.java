@@ -127,6 +127,8 @@ public class ProcessController extends RootController {
         initMemoryAlg();
         /* 内存条可视化 */
         updateMemoryBank();
+        /* 磁盘条可视化 */
+        initExternalStorage();
         /* 资源饼图 */
         updateResource(0, 0, 0);
         /* 使用工具 */
@@ -148,10 +150,15 @@ public class ProcessController extends RootController {
         tableSuspend.setItems(pcsMgr.getBlockQueue());
     }
 
-    public void createNewProcess(ActionEvent actionEvent) {
+    /* 添加进程 */
+    public void createNewProcess() {
         PCB pcb = pcsMgr.create();
         tableProcess.getItems().add(pcb);
         tableReady.setItems(pcsMgr.getReadyQueue());
+    }
+
+    public void addNewProcess(PCB pcb) {
+        tableProcess.getItems().add(pcb);
     }
 
     public void destroyProcess(ActionEvent actionEvent) {
@@ -292,12 +299,12 @@ public class ProcessController extends RootController {
         ObservableList<PieChart.Data> c = FXCollections.observableArrayList();
 
 
-        a.addAll(new PieChart.Data("可用资源A", (double) ra / 10),
-                new PieChart.Data("占用资源A", (double) (10 - ra) / 10));
-        b.addAll(new PieChart.Data("可用资源B", (double) rb / 10),
-                new PieChart.Data("占用资源B", (double) (10 - rb) / 10));
-        c.addAll(new PieChart.Data("可用资源C", (double) rc / 10),
-                new PieChart.Data("占用资源C", (double) (10 - rc) / 10));
+        a.addAll(new PieChart.Data("可用资源A", (double) ra / Config.RESOURCE_A),
+                new PieChart.Data("占用资源A", (double) (Config.RESOURCE_A - ra) / 10));
+        b.addAll(new PieChart.Data("可用资源B", (double) rb / Config.RESOURCE_B),
+                new PieChart.Data("占用资源B", (double) (Config.RESOURCE_B - rb) / Config.RESOURCE_B));
+        c.addAll(new PieChart.Data("可用资源C", (double) rc / Config.RESOURCE_C),
+                new PieChart.Data("占用资源C", (double) (Config.RESOURCE_C - rc) / Config.RESOURCE_C));
         ResourcePieA.setData(a);
         ResourcePieB.setData(b);
         ResourcePieC.setData(c);
@@ -306,10 +313,6 @@ public class ProcessController extends RootController {
 
     /* 更新内存 */
     public void updateMemoryBank() {
-//        memoryBank.setPadding(new Insets(30, 10, 10, 10));
-
-
-        // memoryBank.setSpacing(20);
         // 清除原来的矩形
         memoryBank.getChildren().clear();
         ObservableList<MemoryBlock> memoryList = MainController.systemKernel
@@ -325,7 +328,26 @@ public class ProcessController extends RootController {
                 r.setFill(Color.RED);
             }
             memoryBank.getChildren().add(r);
+
         });
+    }
+
+    /* 初始化外存 */
+    private void initExternalStorage() {
+        ObservableList<MemoryBlock> memoryList = MainController.systemKernel
+                .getMemoryManager()
+                .getMemoryList();
+        // 遍历添加矩形
+        for (int i = 0; i < memoryList.size(); i++) {
+            Rectangle r = new Rectangle(Config.BASE_MEMORY_WIDTH,
+                    (double) memoryList.get(i).getSize() / Config.BASE_STORAGE_SCALE);
+            if (i % 2 == 0) {
+                r.setFill(Color.GREEN);
+            } else {
+                r.setFill(Color.RED);
+            }
+            externalStorage.getChildren().add(r);
+        }
     }
 
     /* 使用工具功能 */
@@ -345,5 +367,30 @@ public class ProcessController extends RootController {
         items.get(3).setOnAction(event -> MainController.systemKernel
                 .getProcessManager()
                 .reSetCpuTimeProperty());
+        // 4.换入换出
+        items.get(4).setOnAction(event -> SwapInAndOut());
+    }
+
+    private void SwapInAndOut() {
+        PCB currentPage = pcsMgr.createPage();
+
+        ObservableList<PCB> items = tableProcess.getItems();
+
+        int index = 0;
+        boolean isExist = false;
+        for (PCB page : items) {
+            if (page.getPid() == currentPage.getPid()) {
+                isExist = true;
+                break;
+            }
+            index++;
+        }
+
+        if (isExist) {
+            tableProcess.getItems().remove(index);
+        } else if (items.size() >= Config.LRU_CAPACITY) {
+            tableProcess.getItems().remove(0);
+        }
+        tableProcess.getItems().add(currentPage);
     }
 }

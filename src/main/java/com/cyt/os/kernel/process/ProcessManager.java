@@ -1,7 +1,9 @@
 package com.cyt.os.kernel.process;
 
+import com.cyt.os.common.Context;
 import com.cyt.os.common.Operation;
 import com.cyt.os.controller.MainController;
+import com.cyt.os.controller.ProcessController;
 import com.cyt.os.enums.ProcessStatus;
 import com.cyt.os.exception.BAException;
 import com.cyt.os.exception.PCBNotFoundException;
@@ -11,6 +13,7 @@ import com.cyt.os.kernel.resourse.algorithm.BankerAlgorithm;
 import com.cyt.os.kernel.resourse.data.BankerData;
 import com.cyt.os.kernel.resourse.data.ResourceRequest;
 import com.cyt.os.ustils.RandomUtil;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -28,6 +31,9 @@ import java.util.concurrent.TimeUnit;
  * @date 2023/11/24
  */
 public class ProcessManager extends Thread {
+    int[] pageReferences = {5, 0, 4, 0, 2, 5, 4, 2, 0};
+    int index = 0;
+
     public static final Logger log = Logger.getLogger(ProcessManager.class.getName());
     /* random */
     private final Random random = new Random();
@@ -121,6 +127,45 @@ public class ProcessManager extends Thread {
         return pcb;
     }
 
+    public PCB createPage() {
+        PCB pcb = new PCB();
+        // TODO 初始化pcb
+        pcb.setMemorySize(random.nextInt(20) + 10);
+        int id = pageReferences[index % 9];
+        index++;
+        pcb.setPid(id);
+        pcb.setServiceTime(random.nextInt(30) + 20);
+        pcb.setUid("页面" + id);
+        PCBList.add(pcb);
+
+
+        // 1.资源分配
+        initResource0(pcb);
+
+        // 2.申请分配内存
+        try {
+            log.info("page: " + pcb.getMemorySize());
+            // 分配内存
+            MainController.systemKernel.
+                    getMemoryManager().
+                    getMAA().
+                    allocateMemory(pcb.getMemorySize(), pcb.getPid());
+            // 分配资源
+            pcb.setStatus(ProcessStatus.ACTIVE_READY);
+        } catch (RuntimeException e) {
+            pcb.setStatus(ProcessStatus.ACTIVE_BLOCK);
+            blockQueue.add(pcb);
+            log.error(e.getMessage());
+        }
+
+
+        // 3.设置活动就绪
+        if (pcb.getStatus() == ProcessStatus.ACTIVE_READY) {
+            readyQueue.add(pcb);
+        }
+        return pcb;
+    }
+
     /**
      * 初始化资源信息
      */
@@ -129,6 +174,33 @@ public class ProcessManager extends Thread {
         int ra = random.nextInt(3) + 3;
         int rb = random.nextInt(2) + 3;
         int rc = random.nextInt(1) + 3;
+
+        //更新银行家算法中的数据
+        List<Integer> maxList = new ArrayList<>();
+        Collections.addAll(maxList, ra, rb, rc);
+
+        /* 更新pcb对应数据 */
+        pcb.initResources(maxList);
+
+        List<Integer> needList = new ArrayList<>();
+        Collections.addAll(needList, ra, rb, rc);
+
+        List<Integer> alocList = new ArrayList<>();
+        Collections.addAll(alocList, 0, 0, 0);
+
+
+        BankerData data = new BankerData();
+        data.setMax(maxList);
+        data.setNeed(needList);
+        data.setAllocation(alocList);
+        ba.getData().put(pcb.getPid(), data);
+    }
+
+    private void initResource0(PCB pcb) {
+        //随机生成进程所需资源总数 资源a b c
+        int ra = 0;
+        int rb = 0;
+        int rc = 0;
 
         //更新银行家算法中的数据
         List<Integer> maxList = new ArrayList<>();
@@ -342,5 +414,9 @@ public class ProcessManager extends Thread {
                 break;
             }
         }
+    }
+
+    public void logPCBList() {
+        PCBList.forEach(System.out::println);
     }
 }
