@@ -1,0 +1,135 @@
+2023-12-15 19:25:02 INFO  ProcessController:343 - 更新饼图： 000
+2023-12-15 19:25:33 INFO  ProcessManager:101 - fenpei: 158
+2023-12-15 19:25:33 INFO  FF:31 - FF算法查询次数： 1
+2023-12-15 19:25:33 INFO  FF:34 - 成功向进程P24622分配大小为158KB的内存块
+2023-12-15 19:25:33 INFO  ProcessManager:108 - req[1, 2, 2]
+2023-12-15 19:25:33 INFO  BankerAlgorithm:42 - **********进程P24622  进入银行家算法 *************
+2023-12-15 19:25:33 INFO  BankerAlgorithm:87 - 进程P24622  尝试试探性分配
+2023-12-15 19:25:33 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-15 19:25:33 INFO  BankerAlgorithm:104 - available:[9, 8, 8]
+2023-12-15 19:25:33 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-15 19:25:33 INFO  BankerAlgorithm:170 - 资源  24622 回收完毕
+2023-12-15 19:25:33 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-15 19:25:33 INFO  BankerAlgorithm:67 - 进程P24622  的资源请求：[1, 2, 2] 通过
+2023-12-15 19:25:33 INFO  ResourceManager:51 - 进程 24622 正式分配资源
+2023-12-15 19:25:33 INFO  ResourceManager:57 - 当前资源： 9-8-8
+2023-12-15 19:25:33 INFO  ProcessController:343 - 更新饼图： 988
+2023-12-15 19:25:33 INFO  ProcessManager:112 - 设置
+2023-12-15 19:25:42 INFO  MemoryManager:61 - 修改内存分配算法： WF
+2023-12-15 19:25:58 INFO  ProcessManager:101 - fenpei: 278
+2023-12-15 19:25:58 INFO  WF:41 - 成功向进程P32081分配大小为278KB的内存块
+2023-12-15 19:25:58 INFO  ProcessManager:108 - req[2, 2, 3]
+2023-12-15 19:25:58 INFO  BankerAlgorithm:42 - **********进程P32081  进入银行家算法 *************
+2023-12-15 19:25:58 INFO  BankerAlgorithm:87 - 进程P32081  尝试试探性分配
+2023-12-15 19:25:58 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-15 19:25:58 INFO  BankerAlgorithm:104 - available:[7, 6, 5]
+2023-12-15 19:25:58 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-15 19:25:58 INFO  BankerAlgorithm:170 - 资源  32081 回收完毕
+2023-12-15 19:25:58 INFO  BankerAlgorithm:170 - 资源  24622 回收完毕
+2023-12-15 19:25:58 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-15 19:25:58 INFO  BankerAlgorithm:67 - 进程P32081  的资源请求：[2, 2, 3] 通过
+2023-12-15 19:25:58 INFO  ResourceManager:51 - 进程 32081 正式分配资源
+2023-12-15 19:25:58 INFO  ResourceManager:57 - 当前资源： 7-6-5
+2023-12-15 19:25:58 INFO  ProcessController:343 - 更新饼图： 765
+2023-12-15 19:25:58 INFO  ProcessManager:112 - 设置
+2023-12-15 19:26:46 INFO  ProcessManager:101 - fenpei: 126
+2023-12-15 19:26:46 INFO  WF:41 - 成功向进程P48707分配大小为126KB的内存块
+2023-12-15 19:26:46 INFO  ProcessManager:108 - req[2, 3, 2]
+2023-12-15 19:26:46 INFO  BankerAlgorithm:42 - **********进程P48707  进入银行家算法 *************
+2023-12-15 19:26:46 INFO  BankerAlgorithm:87 - 进程P48707  尝试试探性分配
+2023-12-15 19:26:46 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-15 19:26:46 INFO  BankerAlgorithm:104 - available:[5, 3, 3]
+2023-12-15 19:26:46 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-15 19:26:46 INFO  BankerAlgorithm:170 - 资源  32081 回收完毕
+2023-12-15 19:26:46 INFO  BankerAlgorithm:170 - 资源  48707 回收完毕
+2023-12-15 19:26:46 INFO  BankerAlgorithm:170 - 资源  24622 回收完毕
+2023-12-15 19:26:46 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-15 19:26:46 INFO  BankerAlgorithm:67 - 进程P48707  的资源请求：[2, 3, 2] 通过
+2023-12-15 19:26:46 INFO  ResourceManager:51 - 进程 48707 正式分配资源
+2023-12-15 19:26:46 INFO  ResourceManager:57 - 当前资源： 5-3-3
+2023-12-15 19:26:46 INFO  ProcessController:343 - 更新饼图： 533
+2023-12-15 19:26:46 INFO  ProcessManager:112 - 设置
+2023-12-15 19:26:47 INFO  ProcessManager:101 - fenpei: 163
+2023-12-15 19:26:47 INFO  WF:41 - 成功向进程P93904分配大小为163KB的内存块
+2023-12-15 19:26:47 INFO  ProcessManager:108 - req[1, 3, 3]
+2023-12-15 19:26:47 INFO  BankerAlgorithm:42 - **********进程P93904  进入银行家算法 *************
+2023-12-15 19:26:47 INFO  BankerAlgorithm:87 - 进程P93904  尝试试探性分配
+2023-12-15 19:26:47 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-15 19:26:47 INFO  BankerAlgorithm:104 - available:[4, 0, 0]
+2023-12-15 19:26:47 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-15 19:26:47 ERROR BankerAlgorithm:180 - 此时资源不安全
+2023-12-15 19:26:47 ERROR BankerAlgorithm:73 - 进程P93904的资源请求：[1, 3, 3] 不通过
+2023-12-15 19:26:47 ERROR BankerAlgorithm:74 - 当前available:[5, 3, 3]
+2023-12-15 19:26:47 ERROR ProcessManager:116 - 进程P93904的资源请求：[1, 3, 3] 不通过
+2023-12-15 19:26:59 INFO  Process:30 - Pycharm 运行了：5
+2023-12-15 19:26:59 INFO  Process:30 - Pycharm 运行了：5
+2023-12-15 19:27:00 INFO  Process:30 - Pycharm 运行了：5
+2023-12-15 19:27:00 INFO  Process:30 - Pycharm 运行了：5
+2023-12-15 19:27:01 INFO  Process:30 - Pycharm 运行了：5
+2023-12-15 19:27:01 INFO  Process:30 - Pycharm 运行了：5
+2023-12-15 19:27:02 INFO  Process:30 - Pycharm 运行了：5
+2023-12-15 19:27:02 INFO  Process:30 - Pycharm 运行了：5
+2023-12-15 19:27:03 INFO  Process:30 - Pycharm 运行了：5
+2023-12-15 19:27:03 INFO  ResourceManager:68 - Pycharm 释放资源 --[1, 2, 2]
+2023-12-15 19:27:03 INFO  ResourceManager:72 - 当前资源： 6-5-5
+2023-12-15 19:27:03 INFO  ProcessController:343 - 更新饼图： 655
+2023-12-15 19:27:03 INFO  WF:93 - MemoryBlock(startAddress=0, size=400, status=FREE, id=-1)
+2023-12-15 19:27:03 INFO  WF:96 - 回收的内存分区与后分区合并，新空闲分区起址为：0，大小为：400
+2023-12-15 19:27:03 INFO  BankerAlgorithm:42 - **********进程P93904  进入银行家算法 *************
+2023-12-15 19:27:03 INFO  BankerAlgorithm:87 - 进程P93904  尝试试探性分配
+2023-12-15 19:27:03 INFO  BankerAlgorithm:103 - 试探完毕： 
+2023-12-15 19:27:03 INFO  BankerAlgorithm:104 - available:[8, 4, 4]
+2023-12-15 19:27:03 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2023-12-15 19:27:03 INFO  BankerAlgorithm:170 - 资源  32081 回收完毕
+2023-12-15 19:27:03 INFO  BankerAlgorithm:170 - 资源  93904 回收完毕
+2023-12-15 19:27:03 INFO  BankerAlgorithm:170 - 资源  48707 回收完毕
+2023-12-15 19:27:03 INFO  BankerAlgorithm:184 - 此时资源安全
+2023-12-15 19:27:03 INFO  BankerAlgorithm:67 - 进程P93904  的资源请求：[2, 2, 2] 通过
+2023-12-15 19:27:03 INFO  ResourceManager:51 - 进程 93904 正式分配资源
+2023-12-15 19:27:03 INFO  ResourceManager:57 - 当前资源： 4-3-3
+2023-12-15 19:27:03 INFO  ProcessController:343 - 更新饼图： 433
+2023-12-15 19:27:04 INFO  FCFS:77 - 进程  Pycharm 结束
+2023-12-15 19:27:04 INFO  Process:30 - steam 运行了：5
+2023-12-15 19:27:05 INFO  Process:30 - steam 运行了：5
+2023-12-15 19:27:05 INFO  Process:30 - steam 运行了：5
+2023-12-15 19:27:06 INFO  Process:30 - steam 运行了：5
+2023-12-15 19:27:06 INFO  Process:30 - steam 运行了：5
+2023-12-15 19:27:07 INFO  Process:30 - steam 运行了：5
+2023-12-15 19:27:07 INFO  Process:30 - steam 运行了：5
+2023-12-15 19:27:08 INFO  Process:30 - steam 运行了：5
+2023-12-15 19:27:08 INFO  ResourceManager:68 - steam 释放资源 --[2, 2, 3]
+2023-12-15 19:27:08 INFO  ResourceManager:72 - 当前资源： 6-5-6
+2023-12-15 19:27:08 INFO  ProcessController:343 - 更新饼图： 656
+2023-12-15 19:27:08 INFO  WF:77 - 回收的内存分区与前后分区合并，新空闲分区起址为：2500，大小为：1500
+2023-12-15 19:27:09 INFO  FCFS:77 - 进程  steam 结束
+2023-12-15 19:27:09 INFO  Process:30 - 三国杀 运行了：5
+2023-12-15 19:27:09 INFO  Process:30 - 三国杀 运行了：5
+2023-12-15 19:27:10 INFO  Process:30 - 三国杀 运行了：5
+2023-12-15 19:27:10 INFO  Process:30 - 三国杀 运行了：5
+2023-12-15 19:27:11 INFO  Process:30 - 三国杀 运行了：5
+2023-12-15 19:27:11 INFO  Process:30 - 三国杀 运行了：5
+2023-12-15 19:27:12 INFO  ResourceManager:68 - 三国杀 释放资源 --[2, 3, 2]
+2023-12-15 19:27:12 INFO  ResourceManager:72 - 当前资源： 8-8-8
+2023-12-15 19:27:12 INFO  ProcessController:343 - 更新饼图： 888
+2023-12-15 19:27:12 INFO  WF:86 - 回收的内存分区与前分区合并，新空闲分区起址为：2500，大小为：1626
+2023-12-15 19:27:12 INFO  FCFS:77 - 进程  三国杀 结束
+2023-12-15 19:27:13 INFO  Process:30 - 云顶之弈 运行了：5
+2023-12-15 19:27:13 INFO  Process:30 - 云顶之弈 运行了：5
+2023-12-15 19:27:14 INFO  Process:30 - 云顶之弈 运行了：5
+2023-12-15 19:27:14 INFO  Process:30 - 云顶之弈 运行了：5
+2023-12-15 19:27:15 INFO  Process:30 - 云顶之弈 运行了：5
+2023-12-15 19:27:15 INFO  Process:30 - 云顶之弈 运行了：5
+2023-12-15 19:27:16 INFO  ResourceManager:68 - 云顶之弈 释放资源 --[2, 2, 2]
+2023-12-15 19:27:16 INFO  ResourceManager:72 - 当前资源： 10-10-10
+2023-12-15 19:27:16 INFO  ProcessController:343 - 更新饼图： 101010
+2023-12-15 19:27:16 INFO  WF:77 - 回收的内存分区与前后分区合并，新空闲分区起址为：2500，大小为：2500
+2023-12-15 19:27:16 INFO  FCFS:77 - 进程  云顶之弈 结束
+2023-12-15 19:27:17 WARN  ProcessController:405 - 清空实例
+2023-12-15 19:27:23 INFO  PageManager:42 - page: 19
+2023-12-15 19:27:23 INFO  WF:41 - 成功向进程P5分配大小为19KB的内存块
+2023-12-15 19:27:26 INFO  PageManager:42 - page: 14
+2023-12-15 19:27:26 INFO  WF:41 - 成功向进程P0分配大小为14KB的内存块
+2023-12-15 19:27:27 INFO  PageManager:42 - page: 29
+2023-12-15 19:27:27 INFO  WF:41 - 成功向进程P4分配大小为29KB的内存块
+2023-12-15 19:27:30 INFO  PageManager:42 - page: 17
+2023-12-15 19:27:30 INFO  WF:41 - 成功向进程P0分配大小为17KB的内存块
