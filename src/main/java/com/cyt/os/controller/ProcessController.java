@@ -27,7 +27,11 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import org.apache.log4j.Logger;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -37,7 +41,10 @@ import java.util.List;
 public class ProcessController extends RootController {
 
     private static final Logger log = Logger.getLogger(ProcessController.class);
-    /* 使用工具 */
+
+    @FXML
+    private Menu moreBar;
+    /* 实用工具 */
     @FXML
     private Menu toolBar;
 
@@ -139,6 +146,8 @@ public class ProcessController extends RootController {
         updateResource(0, 0, 0);
         /* 使用工具 */
         initToolBar();
+        /* 更多 */
+        initMoreBar();
         // 开启调度算法线程
         MainController.systemKernel.start();
     }
@@ -320,7 +329,7 @@ public class ProcessController extends RootController {
             Operation.showErrorAlert("请先选中一个页面！");
         } else {
             pcb = tableProcess.getSelectionModel().getSelectedItem();
-            if (pcb.getPid() >= Config.PAGE_MAX_NUM) {
+            if (pcb.getPid() > Config.PAGE_MAX_NUM) {
                 Operation.showErrorAlert("不能选择进程！");
                 throw new PageNotFoundException("不能选择进程");
             }
@@ -407,6 +416,41 @@ public class ProcessController extends RootController {
                 .reSetCpuTimeProperty());
         // 4.换入换出
         items.get(4).setOnAction(event -> SwapInAndOut());
+    }
+
+    private void initMoreBar() {
+        ObservableList<MenuItem> items = moreBar.getItems();
+        items.get(1).setOnAction(event -> {
+            String[] str = {"os课设,", "进程模拟系统,", "成员,", "陈柚廷,","陈嵚杰,","涂清云,","覃镇阳,"};
+            File file = new File("E:\\project\\kehse\\os\\CTQos\\other\\io.txt");//我们在该类的位置创建一个新文件
+            FileWriter f = null;//创建文件写入对象
+            BufferedWriter f1 = null;//创建字符流写入对象
+            try {
+                //这里把文件写入对象和字符流写入对象分开写了
+                f = new FileWriter("E:\\project\\kehse\\os\\CTQos\\other\\io.txt");//创建一个名为cc.txt的文件
+                f1 = new BufferedWriter(f);
+                //通过循环遍历上面的String 数组中的元素
+                for (int i = 0; i < str.length; i++) {
+                    f1.write(str[i]);//把String中的字符写入文件
+                    f1.newLine();//换行操作
+                }
+                log.info(String.format("写入数据:%s", Arrays.toString(str)));
+                log.info("文件的名字:" + file.getName());
+                log.info("文件的路径:" + file.getPath());
+                log.info("文件的绝对路径:" + file.getAbsolutePath());
+                log.info("是目录吗:" + file.isDirectory());
+                log.info("文件大小:" + file.length());
+            } catch (Exception e) {
+                // TODO: handle exception
+            } finally {//如果没有catch 异常，程序最终会执行到这里
+                try {
+                    f1.close();
+                    f.close();//关闭文件
+                } catch (Exception e2) {
+                    // TODO: handle exception
+                }
+            }
+        });
     }
 
     /* 换入换出算法 */
