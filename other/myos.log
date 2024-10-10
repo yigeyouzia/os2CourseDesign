@@ -1,1 +1,119 @@
 2024-10-10 18:18:20 INFO  ProcessController:343 - 更新饼图： 000
+2024-10-10 18:19:21 INFO  ProcessManager:101 - fenpei: 185
+2024-10-10 18:19:21 INFO  FF:31 - FF算法查询次数： 1
+2024-10-10 18:19:21 INFO  FF:34 - 成功向进程P78939分配大小为185KB的内存块
+2024-10-10 18:19:21 INFO  ProcessManager:108 - req[2, 3, 2]
+2024-10-10 18:19:21 INFO  BankerAlgorithm:42 - **********进程P78939  进入银行家算法 *************
+2024-10-10 18:19:21 INFO  BankerAlgorithm:87 - 进程P78939  尝试试探性分配
+2024-10-10 18:19:21 INFO  BankerAlgorithm:103 - 试探完毕： 
+2024-10-10 18:19:21 INFO  BankerAlgorithm:104 - available:[8, 7, 8]
+2024-10-10 18:19:21 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2024-10-10 18:19:21 INFO  BankerAlgorithm:170 - 资源  78939 回收完毕
+2024-10-10 18:19:21 INFO  BankerAlgorithm:184 - 此时资源安全
+2024-10-10 18:19:21 INFO  BankerAlgorithm:67 - 进程P78939  的资源请求：[2, 3, 2] 通过
+2024-10-10 18:19:21 INFO  ResourceManager:51 - 进程 78939 正式分配资源
+2024-10-10 18:19:21 INFO  ResourceManager:57 - 当前资源： 8-7-8
+2024-10-10 18:19:21 INFO  ProcessController:343 - 更新饼图： 878
+2024-10-10 18:19:21 INFO  ProcessManager:112 - 设置
+2024-10-10 18:20:04 INFO  ProcessManager:101 - fenpei: 160
+2024-10-10 18:20:04 INFO  FF:31 - FF算法查询次数： 2
+2024-10-10 18:20:04 INFO  FF:34 - 成功向进程P94789分配大小为160KB的内存块
+2024-10-10 18:20:04 INFO  ProcessManager:108 - req[2, 3, 3]
+2024-10-10 18:20:04 INFO  BankerAlgorithm:42 - **********进程P94789  进入银行家算法 *************
+2024-10-10 18:20:04 INFO  BankerAlgorithm:87 - 进程P94789  尝试试探性分配
+2024-10-10 18:20:04 INFO  BankerAlgorithm:103 - 试探完毕： 
+2024-10-10 18:20:04 INFO  BankerAlgorithm:104 - available:[6, 4, 5]
+2024-10-10 18:20:04 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2024-10-10 18:20:04 INFO  BankerAlgorithm:170 - 资源  94789 回收完毕
+2024-10-10 18:20:04 INFO  BankerAlgorithm:170 - 资源  78939 回收完毕
+2024-10-10 18:20:04 INFO  BankerAlgorithm:184 - 此时资源安全
+2024-10-10 18:20:04 INFO  BankerAlgorithm:67 - 进程P94789  的资源请求：[2, 3, 3] 通过
+2024-10-10 18:20:04 INFO  ResourceManager:51 - 进程 94789 正式分配资源
+2024-10-10 18:20:04 INFO  ResourceManager:57 - 当前资源： 6-4-5
+2024-10-10 18:20:04 INFO  ProcessController:343 - 更新饼图： 645
+2024-10-10 18:20:04 INFO  ProcessManager:112 - 设置
+2024-10-10 18:20:05 INFO  ProcessManager:101 - fenpei: 196
+2024-10-10 18:20:05 INFO  FF:31 - FF算法查询次数： 3
+2024-10-10 18:20:05 INFO  FF:34 - 成功向进程P24447分配大小为196KB的内存块
+2024-10-10 18:20:05 INFO  ProcessManager:108 - req[1, 3, 3]
+2024-10-10 18:20:05 INFO  BankerAlgorithm:42 - **********进程P24447  进入银行家算法 *************
+2024-10-10 18:20:05 INFO  BankerAlgorithm:87 - 进程P24447  尝试试探性分配
+2024-10-10 18:20:05 INFO  BankerAlgorithm:103 - 试探完毕： 
+2024-10-10 18:20:05 INFO  BankerAlgorithm:104 - available:[5, 1, 2]
+2024-10-10 18:20:05 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2024-10-10 18:20:05 INFO  BankerAlgorithm:170 - 资源  94789 回收完毕
+2024-10-10 18:20:05 INFO  BankerAlgorithm:170 - 资源  78939 回收完毕
+2024-10-10 18:20:05 INFO  BankerAlgorithm:170 - 资源  24447 回收完毕
+2024-10-10 18:20:05 INFO  BankerAlgorithm:184 - 此时资源安全
+2024-10-10 18:20:05 INFO  BankerAlgorithm:67 - 进程P24447  的资源请求：[1, 3, 3] 通过
+2024-10-10 18:20:05 INFO  ResourceManager:51 - 进程 24447 正式分配资源
+2024-10-10 18:20:05 INFO  ResourceManager:57 - 当前资源： 5-1-2
+2024-10-10 18:20:05 INFO  ProcessController:343 - 更新饼图： 512
+2024-10-10 18:20:05 INFO  ProcessManager:112 - 设置
+2024-10-10 18:20:06 INFO  ProcessManager:101 - fenpei: 134
+2024-10-10 18:20:06 INFO  FF:31 - FF算法查询次数： 5
+2024-10-10 18:20:06 INFO  FF:34 - 成功向进程P50090分配大小为134KB的内存块
+2024-10-10 18:20:06 INFO  ProcessManager:108 - req[2, 3, 3]
+2024-10-10 18:20:06 INFO  BankerAlgorithm:42 - **********进程P50090  进入银行家算法 *************
+2024-10-10 18:20:06 WARN  BankerAlgorithm:57 - 2 请求大于剩余
+2024-10-10 18:20:06 ERROR ProcessManager:116 - 进程P50090请求的资源超过可用资源---[2, 3, 3]>1
+2024-10-10 18:20:55 INFO  Process:30 - 金铲铲 运行了：5
+2024-10-10 18:20:55 INFO  Process:30 - 金铲铲 运行了：5
+2024-10-10 18:20:56 INFO  Process:30 - 金铲铲 运行了：5
+2024-10-10 18:20:56 INFO  Process:30 - 金铲铲 运行了：5
+2024-10-10 18:20:57 INFO  Process:30 - 金铲铲 运行了：5
+2024-10-10 18:20:57 INFO  Process:30 - 金铲铲 运行了：5
+2024-10-10 18:20:58 INFO  ResourceManager:68 - 金铲铲 释放资源 --[2, 3, 2]
+2024-10-10 18:20:58 INFO  ResourceManager:72 - 当前资源： 7-4-4
+2024-10-10 18:20:58 INFO  ProcessController:343 - 更新饼图： 744
+2024-10-10 18:20:58 INFO  FF:102 - 回收的内存分区无法合并
+2024-10-10 18:20:58 INFO  BankerAlgorithm:42 - **********进程P50090  进入银行家算法 *************
+2024-10-10 18:20:58 INFO  BankerAlgorithm:87 - 进程P50090  尝试试探性分配
+2024-10-10 18:20:58 INFO  BankerAlgorithm:103 - 试探完毕： 
+2024-10-10 18:20:58 INFO  BankerAlgorithm:104 - available:[7, 1, 3]
+2024-10-10 18:20:58 INFO  BankerAlgorithm:132 - 进入安全性检测算法
+2024-10-10 18:20:58 INFO  BankerAlgorithm:170 - 资源  94789 回收完毕
+2024-10-10 18:20:58 INFO  BankerAlgorithm:170 - 资源  50090 回收完毕
+2024-10-10 18:20:58 INFO  BankerAlgorithm:170 - 资源  24447 回收完毕
+2024-10-10 18:20:58 INFO  BankerAlgorithm:184 - 此时资源安全
+2024-10-10 18:20:58 INFO  BankerAlgorithm:67 - 进程P50090  的资源请求：[2, 3, 2] 通过
+2024-10-10 18:20:58 INFO  ResourceManager:51 - 进程 50090 正式分配资源
+2024-10-10 18:20:58 INFO  ResourceManager:57 - 当前资源： 5-1-2
+2024-10-10 18:20:58 INFO  ProcessController:343 - 更新饼图： 512
+2024-10-10 18:20:58 INFO  FCFS:77 - 进程  金铲铲 结束
+2024-10-10 18:20:59 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:20:59 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:00 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:00 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:01 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:01 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:02 INFO  ResourceManager:68 - CF 释放资源 --[2, 3, 3]
+2024-10-10 18:21:02 INFO  ResourceManager:72 - 当前资源： 7-4-5
+2024-10-10 18:21:02 INFO  ProcessController:343 - 更新饼图： 745
+2024-10-10 18:21:02 INFO  FF:86 - 回收的内存分区与前分区合并，新空闲分区起址为：0，大小为：400
+2024-10-10 18:21:02 INFO  FCFS:77 - 进程  CF 结束
+2024-10-10 18:21:02 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:03 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:03 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:04 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:04 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:05 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:05 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:06 INFO  Process:30 - CF 运行了：5
+2024-10-10 18:21:06 INFO  ResourceManager:68 - CF 释放资源 --[1, 3, 3]
+2024-10-10 18:21:06 INFO  ResourceManager:72 - 当前资源： 8-7-8
+2024-10-10 18:21:06 INFO  ProcessController:343 - 更新饼图： 878
+2024-10-10 18:21:06 INFO  FF:77 - 回收的内存分区与前后分区合并，新空闲分区起址为：0，大小为：700
+2024-10-10 18:21:07 INFO  FCFS:77 - 进程  CF 结束
+2024-10-10 18:21:07 INFO  Process:30 - Visual Paradigm 运行了：5
+2024-10-10 18:21:08 INFO  Process:30 - Visual Paradigm 运行了：5
+2024-10-10 18:21:08 INFO  Process:30 - Visual Paradigm 运行了：5
+2024-10-10 18:21:09 INFO  Process:30 - Visual Paradigm 运行了：5
+2024-10-10 18:21:09 INFO  Process:30 - Visual Paradigm 运行了：5
+2024-10-10 18:21:10 INFO  Process:30 - Visual Paradigm 运行了：5
+2024-10-10 18:21:10 INFO  Process:30 - Visual Paradigm 运行了：5
+2024-10-10 18:21:11 INFO  ResourceManager:68 - Visual Paradigm 释放资源 --[2, 3, 2]
+2024-10-10 18:21:11 INFO  ResourceManager:72 - 当前资源： 10-10-10
+2024-10-10 18:21:11 INFO  ProcessController:343 - 更新饼图： 101010
+2024-10-10 18:21:11 INFO  FF:77 - 回收的内存分区与前后分区合并，新空闲分区起址为：0，大小为：1000
+2024-10-10 18:21:11 INFO  FCFS:77 - 进程  Visual Paradigm 结束
